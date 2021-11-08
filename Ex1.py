@@ -8,16 +8,6 @@ from tkinter import *
 "function that gets a call and returns allocated elevator"
 
 
-def no_blank(fd):
-    try:
-        while True:
-            line = next(fd)
-            if len(line.strip()) != 0:
-                yield line
-    except:
-        return
-
-
 def allocateElevator(call):
     num = randrange(len(elevators))
     call.allocatedElevator = num
@@ -121,8 +111,6 @@ for i in callsArr:
 with open(output, "wb") as f:
     writer = csv.writer(f)
     writer.writerows(inputData)
-
-
 
 "GUI"
 root = Tk()
