@@ -108,7 +108,7 @@ for i in callsArr:
     inputData.append(tempArr)
 
 "write data in the new output.csv file"
-with open(output, "wb") as f:
+with open(output, "w", newline="") as f:
     writer = csv.writer(f)
     writer.writerows(inputData)
 
@@ -123,7 +123,6 @@ for i in range(0, numbersOfFloors):
     C.create_line(20, 20 + deltaFloor * i, 380, 20 + deltaFloor * i)
 for i in range(0, len(elevators)):
     C.create_line(20 + deltaElevators * i, 20, 20 + deltaElevators * i, 470)
-C.create_rectangle()
 
 C.pack()
 mainloop()
