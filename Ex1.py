@@ -22,12 +22,6 @@ def allocateElevator(call):
     for e in elevators:
         e.clearCompleteCalls(call)
 
-
-
-
-
-
-
 "elevetor class:"
 "each elevator has id,speed,minFloor, maxFloor, closeTime, openTime, startTime, stopTime"
 
