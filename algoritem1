@@ -1,0 +1,31 @@
+class Elevator:
+    def __init__(self, id, speed, minFloor, maxFloor, closeTime, openTime, startTime, stopTime , curentFloor: int = 0):
+        self.id = id
+        self.speed = speed
+        self.minFloor = minFloor
+        self.maxFloor = maxFloor
+        self.closeTime = closeTime
+        self.openTime = openTime
+        self.startTime = startTime
+        self.stopTime = stopTime
+        self.position = 0
+        self.callsQueue=[]
+        self.curentFloor = curentFloor
+
+        def curentFloor(call):
+
+        for (int i to elevetor[i])
+        i.curentFloor = (i.speed*maxFloor)/(maxFloor - minFloor)//secends from floor 0 to 100
+        arr [i] = i.curentFloor
+
+        def stop:
+
+        if (stop)
+          r  for (int i to arr)
+            i.curentFloor += i.startTime + i.stopTime + i.openTime//if elevtor stop reset arr
+            arr [i] = i.curentFloo
+
+    def up(Elevator):
+
+    def down(Elevator):
+
