@@ -89,6 +89,7 @@ list = sys.argv
 building = list[1]
 calls = list[2]
 output = list[3]
+print(list)
 
 "we will read building.json file and will get the necessary input to our own variables"
 with open(building) as myfile:
