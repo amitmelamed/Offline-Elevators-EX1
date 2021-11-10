@@ -9,8 +9,21 @@ from tkinter import *
 
 
 def allocateElevator(call):
-    num = randrange(len(elevators))
-    call.allocatedElevator = num
+    minTime=call.calcTime(elevators[0])
+    minIndex=0
+    for i in range(len(elevators)):
+        currentTime=call.calcTime(elevators[i])
+        if(currentTime<minTime):
+            minTime=currentTime
+            minIndex=i
+    call.allocatedElevator=minIndex
+    elevators[minIndex].position=call.destination
+    elevators[minIndex].callsQueue.append(call)
+
+
+
+
+
 
 
 "elevetor class:"
@@ -28,12 +41,15 @@ class Elevator:
         self.startTime = startTime
         self.stopTime = stopTime
         self.position = 0
+        self.callsQueue=[]
 
     def toString(self):
         return "id:" + str(self.id) + " speed:" + str(self.speed) + " minFloor:" + str(
             self.minFloor) + " maxFloor:" + str(self.maxFloor) + " closeTime:" + str(
             self.closeTime) + " openTime:" + str(self.openTime) + " startTime:" + str(
             self.startTime) + " stopTime:" + str(self.stopTime) + "position: " + str(self.position)
+
+
 
 
 "call class: each call has time, source, destination, allocatedElevator"
@@ -45,10 +61,15 @@ class Call:
         self.source = source
         self.destination = destination
         self.allocatedElevator = allocatedElevator
+        self.absFloor=abs(int(source)-int(destination))
 
     def toString(self):
         return ("time:" + str(self.time) + " source:" + str(self.source) + " destination:" + str(
             self.destination) + " allocatedElevator:" + str(self.allocatedElevator))
+    def calcTime(self,elevator):
+        calc=elevator.openTime+elevator.closeTime+speed*self.absFloor+abs(int(elevator.position)-int(call.source))
+        calc=calc**len(elevator.callsQueue)
+        return calc
 
 
 "sys.argv is a function that gets the input from the terminal and puts its in an array"
