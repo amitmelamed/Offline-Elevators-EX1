@@ -54,13 +54,10 @@ class Elevator:
     def clearCompleteCalls(self,call):
         count=0
         for i in self.callsQueue:
-            if (float(i.time)<float(call.time)-35):
+            if (float(i.time)<float(call.time)-25):
                 count=count+1
         for i in range (count):
             self.callsQueue.pop(0)
-
-
-
 
 
 "call class: each call has time, source, destination, allocatedElevator"
@@ -79,7 +76,7 @@ class Call:
             self.destination) + " allocatedElevator:" + str(self.allocatedElevator))
     def calcTime(self,elevator):
         calc=elevator.openTime+elevator.closeTime+speed*self.absFloor+abs(int(elevator.position)-int(call.source))
-        calc=calc**len(elevator.callsQueue)
+        calc=calc*len(elevator.callsQueue)
         return calc
 
 
