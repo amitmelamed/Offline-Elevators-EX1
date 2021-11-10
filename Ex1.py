@@ -37,7 +37,8 @@ class Elevator:
         self.startTime = startTime
         self.stopTime = stopTime
         self.position = 0
-        self.callsQueue=[]
+        self.callsQueue = []
+        # self.arr = [maxFloor - minFloor]
 
     def toString(self):
         return "id:" + str(self.id) + " speed:" + str(self.speed) + " minFloor:" + str(
@@ -109,8 +110,12 @@ for i in range(0, len(obj['_elevators'])):
     openTime = obj['_elevators'][i]['_openTime']
     startTime = obj['_elevators'][i]['_startTime']
     stopTime = obj['_elevators'][i]['_stopTime']
+    # for j in range(0, len(arr)):
+    #     arr[j] += speed
+
     e = Elevator(id, speed, minFloor, maxFloor, closeTime, openTime, startTime, stopTime)
     elevators.append(e)
+
 
 "init calls"
 with open(calls) as f:
