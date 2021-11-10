@@ -19,6 +19,8 @@ def allocateElevator(call):
     call.allocatedElevator=minIndex
     elevators[minIndex].position=call.destination
     elevators[minIndex].callsQueue.append(call)
+    for e in elevators:
+        e.clearCompleteCalls(call)
 
 
 
@@ -48,6 +50,15 @@ class Elevator:
             self.minFloor) + " maxFloor:" + str(self.maxFloor) + " closeTime:" + str(
             self.closeTime) + " openTime:" + str(self.openTime) + " startTime:" + str(
             self.startTime) + " stopTime:" + str(self.stopTime) + "position: " + str(self.position)
+
+    def clearCompleteCalls(self,call):
+        count=0
+        for i in self.callsQueue:
+            if (float(i.time)<float(call.time)-35):
+                count=count+1
+        for i in range (count):
+            self.callsQueue.pop(0)
+
 
 
 
