@@ -5,6 +5,12 @@ from random import randrange
 
 from tkinter import *
 
+#to run the algorithem
+#python3 Ex1.py data/Ex1_input/Ex1_Buildings/B5.json data/Ex1_input/Ex1_Calls/Calls_a.csv output.csv
+#to run the tester
+#java -jar libs/Ex1_checker_V1.2_obf.jar 1111,2222,3333 data/Ex1_input/Ex1_Buildings/B5.json output.csv out.log
+
+
 "function that gets a call and returns allocated elevator"
 
 
