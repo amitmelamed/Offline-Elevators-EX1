@@ -1,3 +1,4 @@
+import subprocess
 import sys
 import json
 import csv
@@ -145,6 +146,9 @@ for i in callsArr:
 with open(output, "w", newline="") as f:
     writer = csv.writer(f)
     writer.writerows(inputData)
+
+subprocess.Popen(["powershell.exe", "java -jar libs/Ex1_checker_V1.2_obf.jar 1111,2222,3333 "+list[1]+" "+list[3] +" out.log"])
+
 
 "GUI"
 root = Tk()
