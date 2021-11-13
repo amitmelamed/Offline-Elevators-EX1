@@ -6,31 +6,38 @@ from random import randrange
 
 from tkinter import *
 
-#to run the algorithem
-#python3 Ex1.py data/Ex1_input/Ex1_Buildings/B5.json data/Ex1_input/Ex1_Calls/Calls_a.csv output.csv
-#to run the tester
-#java -jar libs/Ex1_checker_V1.2_obf.jar 1111,2222,3333 data/Ex1_input/Ex1_Buildings/B5.json output.csv out.log
+# to run the algorithem
+# python3 Ex1.py data/Ex1_input/Ex1_Buildings/B5.json data/Ex1_input/Ex1_Calls/Calls_a.csv output.csv
+# to run the tester
+# java -jar libs/Ex1_checker_V1.2_obf.jar 1111,2222,3333 data/Ex1_input/Ex1_Buildings/B5.json output.csv out.log
 
 
 "function that gets a call and returns allocated elevator"
 
 
 def allocateElevator(call):
-    minTime=call.calcTime(elevators[0])
-    minIndex=0
+    minTime = call.calcTime(elevators[0])
+    minIndex = 0
     for i in range(len(elevators)):
-        currentTime=call.calcTime(elevators[i])
-        if(currentTime<minTime):
-            minTime=currentTime
-            minIndex=i
-    call.allocatedElevator=minIndex
-    elevators[minIndex].position=call.destination
+        currentTime = call.calcTime(elevators[i])
+        if (currentTime < minTime):
+            minTime = currentTime
+            minIndex = i
+    call.allocatedElevator = minIndex
+    elevators[minIndex].position = call.destination
     elevators[minIndex].callsQueue.append(call)
     for e in elevators:
         e.clearCompleteCalls(call)
 
+
+
+
+
+
 "elevetor class:"
 "each elevator has id,speed,minFloor, maxFloor, closeTime, openTime, startTime, stopTime"
+
+
 
 
 class Elevator:
@@ -53,12 +60,12 @@ class Elevator:
             self.closeTime) + " openTime:" + str(self.openTime) + " startTime:" + str(
             self.startTime) + " stopTime:" + str(self.stopTime) + "position: " + str(self.position)
 
-    def clearCompleteCalls(self,call):
-        count=0
+    def clearCompleteCalls(self, call):
+        count = 0
         for i in self.callsQueue:
-            if (float(i.time)<float(call.time)-25):
-                count=count+1
-        for i in range (count):
+            if (float(i.time) < float(call.time) - 30):
+                count = count + 1
+        for i in range(count):
             self.callsQueue.pop(0)
 
 
@@ -71,14 +78,16 @@ class Call:
         self.source = source
         self.destination = destination
         self.allocatedElevator = allocatedElevator
-        self.absFloor=abs(int(source)-int(destination))
+        self.absFloor = abs(int(source) - int(destination))
 
     def toString(self):
         return ("time:" + str(self.time) + " source:" + str(self.source) + " destination:" + str(
             self.destination) + " allocatedElevator:" + str(self.allocatedElevator))
-    def calcTime(self,elevator):
-        calc=elevator.openTime+elevator.closeTime+speed*self.absFloor+abs(int(elevator.position)-int(call.source))
-        calc=calc*len(elevator.callsQueue)
+
+    def calcTime(self, elevator):
+        calc = elevator.openTime + elevator.closeTime+ elevator.startTime+elevator.stopTime+ speed * self.absFloor + abs(
+            int(elevator.position) - int(call.source))
+        calc = calc * len(elevator.callsQueue)
         return calc
 
 
@@ -124,7 +133,6 @@ for i in range(0, len(obj['_elevators'])):
     e = Elevator(id, speed, minFloor, maxFloor, closeTime, openTime, startTime, stopTime)
     elevators.append(e)
 
-
 "init calls"
 with open(calls) as f:
     reader = csv.reader(f)
@@ -148,20 +156,20 @@ with open(output, "w", newline="") as f:
     writer = csv.writer(f)
     writer.writerows(inputData)
 
-subprocess.Popen(["powershell.exe", "java -jar libs/Ex1_checker_V1.2_obf.jar 1111,2222,3333 "+list[1]+" "+list[3] +" out.log"])
-
+subprocess.Popen(["powershell.exe",
+                  "java -jar libs/Ex1_checker_V1.2_obf.jar 1111,2222,3333 " + list[1] + " " + list[3] + " out.log"])
 
 "GUI"
-root = Tk()
-C = Canvas(root, bg="yellow", height=600, width=400)
-C.create_rectangle(20, 20, 380, 470)
-numbersOfFloors = abs(minFloor - maxFloor)
-deltaFloor = 500 / numbersOfFloors
-deltaElevators = 360 / len(elevators)
-for i in range(0, numbersOfFloors):
-    C.create_line(20, 20 + deltaFloor * i, 380, 20 + deltaFloor * i)
-for i in range(0, len(elevators)):
-    C.create_line(20 + deltaElevators * i, 20, 20 + deltaElevators * i, 470)
+#root = Tk()
+#C = Canvas(root, bg="yellow", height=600, width=400)
+#C.create_rectangle(20, 20, 380, 470)
+#numbersOfFloors = abs(minFloor - maxFloor)
+#deltaFloor = 500 / numbersOfFloors
+#deltaElevators = 360 / len(elevators)
+#for i in range(0, numbersOfFloors):
+#    C.create_line(20, 20 + deltaFloor * i, 380, 20 + deltaFloor * i)
+#for i in range(0, len(elevators)):
+#    C.create_line(20 + deltaElevators * i, 20, 20 + deltaElevators * i, 470)
 
-C.pack()
-mainloop()
+#C.pack()
+#mainloop()
