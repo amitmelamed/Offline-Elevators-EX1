@@ -6,15 +6,10 @@ from random import randrange
 
 from tkinter import *
 
-# to run the algorithem
-# python3 Ex1.py data/Ex1_input/Ex1_Buildings/B5.json data/Ex1_input/Ex1_Calls/Calls_a.csv output.csv
-# to run the tester
-# java -jar libs/Ex1_checker_V1.2_obf.jar 1111,2222,3333 data/Ex1_input/Ex1_Buildings/B5.json output.csv out.log
-
+# to run the algorithm
+# python3 Ex1.py Ex1_Buildings/B5.json Ex1_Calls/Calls_a.csv output.csv
 
 "function that gets a call and returns allocated elevator"
-
-
 def allocateElevator(call):
     minTime = call.calcTime(elevators[0])
     minIndex = 0
@@ -29,17 +24,8 @@ def allocateElevator(call):
     for e in elevators:
         e.clearCompleteCalls(call)
 
-
-
-
-
-
 "elevetor class:"
 "each elevator has id,speed,minFloor, maxFloor, closeTime, openTime, startTime, stopTime"
-
-
-
-
 class Elevator:
     def __init__(self, id, speed, minFloor, maxFloor, closeTime, openTime, startTime, stopTime):
         self.id = id
@@ -70,8 +56,6 @@ class Elevator:
 
 
 "call class: each call has time, source, destination, allocatedElevator"
-
-
 class Call:
     def __init__(self, time, source, destination, allocatedElevator):
         self.time = time
