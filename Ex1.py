@@ -33,7 +33,7 @@ def allocateElevator(call):
 
 
 class Elevator:
-    def __init__(self, id, speed, minFloor, maxFloor, closeTime, openTime, startTime, stopTime):
+    def __init__(self, id, speed, minFloor, maxFloor, closeTime, openTime, startTime, stopTime, arrfloose):
         self.id = id
         self.speed = speed
         self.minFloor = minFloor
@@ -44,7 +44,7 @@ class Elevator:
         self.stopTime = stopTime
         self.position = 0
         self.callsQueue = []
-        # self.arr = [maxFloor - minFloor]
+        self.arrfloose = []
 
     def toString(self):
         return "id:" + str(self.id) + " speed:" + str(self.speed) + " minFloor:" + str(
@@ -70,7 +70,7 @@ class Call:
         self.source = source
         self.destination = destination
         self.allocatedElevator = allocatedElevator
-        self.absFloor=abs(int(source)-int(destination))
+        self.absFloor = abs(int(source)-int(destination))
 
     def toString(self):
         return ("time:" + str(self.time) + " source:" + str(self.source) + " destination:" + str(
@@ -103,8 +103,10 @@ maxFloor = obj['_maxFloor']
 
 "elevators is array that contains all the elevators in the building"
 "callsArr is an array that contains all the calls that we gets as input"
+"arrfloose is an array that tells us where are the elevators at any given second .... hopefully"
 elevators = []
 callsArr = []
+arrfloose = []
 
 "init elevators"
 for i in range(0, len(obj['_elevators'])):
@@ -116,11 +118,45 @@ for i in range(0, len(obj['_elevators'])):
     openTime = obj['_elevators'][i]['_openTime']
     startTime = obj['_elevators'][i]['_startTime']
     stopTime = obj['_elevators'][i]['_stopTime']
-    # for j in range(0, len(arr)):
-    #     arr[j] += speed
+    for j in range(0, (maxFloor[i]-minFloor[i])):
+        arrfloose[j] += speed[i]
 
-    e = Elevator(id, speed, minFloor, maxFloor, closeTime, openTime, startTime, stopTime)
+    e = Elevator(id, speed, minFloor, maxFloor, closeTime, openTime, startTime, stopTime,arrfloose)
     elevators.append(e)
+
+"this function initializes the array in second from source floor to destination in up mode"
+def up(call,arrfloose):
+    for i in range(len(elevators)):
+        if call.time != arrfloose[call.source]:
+            e[i].arrfloose[call.source] += e[i].stopTime + e[i].openTime + e[i].closeTimee + e[i].startTime + (
+                        call.time - e[i].arrfloose[call.source])
+        else:
+            e[i].arrfloose[call.source] += e[i].closeTime + e[i].openTime + e[i].stopTime + e[i].startTime
+        for j in range(call.source, call.destination):
+            e[i].arrfloose[j + 1] += e[i].arrfloose[j]
+
+"this function initializes the array in second from source floor to destination in down mode"
+def dowm(call, arrfloose, elevators):
+    for i in range(len(elevators)):
+        if call.time != arrfloose[call.source]:
+            e[i].arrfloose[call.source] += e[i].stopTime + e[i].openTime + e[i].closeTimee + e[i].startTime + (
+                        call.time - e[i].arrfloose[call.source])
+        else:
+            e[i].arrfloose[call.source] += e[i].closeTime + e[i].openTime + e[i].stopTime + e[i].startTime
+    for j in range(call.source, call.destination):
+        e[i].arrfloose[j + 1] += e[i].arrfloose[j]
+        "need to be i-- fixit"
+
+"this function returns  what is the time of elevator in the i floor" " need to be fixed"
+def curentFloor(arrfloose,i):
+    return arrfloose[i]
+
+# "need to be complited"
+# def allocateElevator(call):
+#     for i in range(len(elevators)):
+#         if call.source < call.destination:
+
+
 
 
 "init calls"
