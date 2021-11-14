@@ -1,3 +1,4 @@
+import subprocess
 import sys
 import json
 import csv
@@ -13,17 +14,37 @@ from tkinter import *
 
 "function that gets a call and returns allocated elevator"
 
+"very stupid algoritem that works good for buildings with 2 elevators"
+def allocateElevatorB3(call):
+    fastElevatorIndex = 0
+    slowElevatorIndex = 1
+    if (elevators[0].speed > elevators[1].speed):
+        fastElevatorIndex = 1
+        slowElevatorIndex = 0
+    floorsCount = maxFloor - minFloor
+
+    if (int(call.destination) < floorsCount / 3):
+        call.allocatedElevator = slowElevatorIndex
+    else:
+        call.allocatedElevator = fastElevatorIndex
+
+"function that gets a call and returns allocated elevator"
 
 def allocateElevator(call):
-    minTime=call.calcTime(elevators[0])
-    minIndex=0
+    "we check if we have only 2 elevators we will use better algoritem for small buildings"
+    if (len(elevators) == 2):
+        allocateElevatorB3(call)
+        return
+
+    minTime = call.calcTime(elevators[0])
+    minIndex = 0
     for i in range(len(elevators)):
-        currentTime=call.calcTime(elevators[i])
-        if(currentTime<minTime):
-            minTime=currentTime
-            minIndex=i
-    call.allocatedElevator=minIndex
-    elevators[minIndex].position=call.destination
+        currentTime = call.calcTime(elevators[i])
+        if (currentTime < minTime):
+            minTime = currentTime
+            minIndex = i
+    call.allocatedElevator = minIndex
+    elevators[minIndex].position = call.destination
     elevators[minIndex].callsQueue.append(call)
     for e in elevators:
         e.clearCompleteCalls(call)
@@ -55,7 +76,7 @@ class Elevator:
     def clearCompleteCalls(self,call):
         count=0
         for i in self.callsQueue:
-            if (float(i.time)<float(call.time)-25):
+            if (float(i.time)<float(call.time)-30):
                 count=count+1
         for i in range (count):
             self.callsQueue.pop(0)
@@ -118,8 +139,8 @@ for i in range(0, len(obj['_elevators'])):
     openTime = obj['_elevators'][i]['_openTime']
     startTime = obj['_elevators'][i]['_startTime']
     stopTime = obj['_elevators'][i]['_stopTime']
-    for j in range(0, (maxFloor[i]-minFloor[i])):
-        arrfloose[j] += speed[i]
+#    for j in range(0, (maxFloor[i]-minFloor[i])):
+#        arrfloose[j] += speed[i]
 
     e = Elevator(id, speed, minFloor, maxFloor, closeTime, openTime, startTime, stopTime,arrfloose)
     elevators.append(e)
@@ -164,7 +185,7 @@ def curentFloor(e,i,j):
     return e[i].arrfloose[j]
 
 "need to be completed"
-def allocateElevator(call):
+def allocateElevatorEran(call):
     for i in range(len(elevators)):
         if call.source < call.destination:
             "if elevator going up we want to initializes the e[i].arrfloose so we can know where the elevator in eny given time"
@@ -197,17 +218,19 @@ with open(output, "w", newline="") as f:
     writer = csv.writer(f)
     writer.writerows(inputData)
 
+subprocess.Popen(["powershell.exe",
+                  "java -jar Ex1_checker_V1.2_obf.jar 1111,2222,3333 " + list[1] + " " + list[3] + " out.log"])
 "GUI"
-root = Tk()
-C = Canvas(root, bg="yellow", height=600, width=400)
-C.create_rectangle(20, 20, 380, 470)
-numbersOfFloors = abs(minFloor - maxFloor)
-deltaFloor = 500 / numbersOfFloors
-deltaElevators = 360 / len(elevators)
-for i in range(0, numbersOfFloors):
-    C.create_line(20, 20 + deltaFloor * i, 380, 20 + deltaFloor * i)
-for i in range(0, len(elevators)):
-    C.create_line(20 + deltaElevators * i, 20, 20 + deltaElevators * i, 470)
+#root = Tk()
+#C = Canvas(root, bg="yellow", height=600, width=400)
+#C.create_rectangle(20, 20, 380, 470)
+#numbersOfFloors = abs(minFloor - maxFloor)
+#deltaFloor = 500 / numbersOfFloors
+#deltaElevators = 360 / len(elevators)
+#for i in range(0, numbersOfFloors):
+#    C.create_line(20, 20 + deltaFloor * i, 380, 20 + deltaFloor * i)
+#for i in range(0, len(elevators)):
+#    C.create_line(20 + deltaElevators * i, 20, 20 + deltaElevators * i, 470)
 
-C.pack()
-mainloop()
+#C.pack()
+#mainloop()
