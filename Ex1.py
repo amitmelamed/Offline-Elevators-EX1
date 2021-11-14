@@ -125,9 +125,11 @@ for i in range(0, len(obj['_elevators'])):
     elevators.append(e)
 
 "this function initializes the array in second from source floor to destination in up mode"
-def up(call,arrfloose):
-    for i in range(len(elevators)):
-        if call.time != arrfloose[call.source]:
+"so if the elevator took a given call we will know now the elevator floor/time in any given time/floor"
+"it doesnt need to go all over evey elevator arr only the one who took the call"
+def up(call,i):
+    # for i in range(len(elevators)):
+        if call.time != e[i].arrfloose[call.source]:
             e[i].arrfloose[call.source] += e[i].stopTime + e[i].openTime + e[i].closeTimee + e[i].startTime + (
                         call.time - e[i].arrfloose[call.source])
         else:
@@ -136,25 +138,38 @@ def up(call,arrfloose):
             e[i].arrfloose[j + 1] += e[i].arrfloose[j]
 
 "this function initializes the array in second from source floor to destination in down mode"
-def dowm(call, arrfloose, elevators):
-    for i in range(len(elevators)):
-        if call.time != arrfloose[call.source]:
+"so if the elevator took a given call we will know now the elevator floor/time in any given time/floor until the elevator will arrive to her destination"
+"it doesnt need to go all over evey elevator arr only the one who took the call"
+def dowm(call,i):
+    # for i in range(len(elevators)):
+        if call.time != e[i].arrfloose[call.source]:
             e[i].arrfloose[call.source] += e[i].stopTime + e[i].openTime + e[i].closeTimee + e[i].startTime + (
                         call.time - e[i].arrfloose[call.source])
         else:
             e[i].arrfloose[call.source] += e[i].closeTime + e[i].openTime + e[i].stopTime + e[i].startTime
-    for j in range(call.source, call.destination):
-        e[i].arrfloose[j + 1] += e[i].arrfloose[j]
-        "need to be i-- fixit"
+        for j in range(call.source, call.destination):
+          e[i].arrfloose[j + 1] += e[i].arrfloose[j]
+          "need to be i-- fixit"
 
-"this function returns  what is the time of elevator in the i floor" " need to be fixed"
-def curentFloor(arrfloose,i):
-    return arrfloose[i]
+def nearsource(call,i):
+    for i in range(len(elevators)):
+        "we want to go over all elevators to see which one closer to call.source be given call.time and compering it to e[i].arrfloose[correnfloor]"
+        "we need also to check if the elevator is going to source direction (up or down) so we will know if its worth to this elevator to take the call"
+        "did not complete"
+        "i'm tired and can't think"
 
-# "need to be complited"
-# def allocateElevator(call):
-#     for i in range(len(elevators)):
-#         if call.source < call.destination:
+"this function returns what is the time of elevator in the i elevator and j floor"  "need to be fixed"
+"we can also return the curent floor by given call.time"
+def curentFloor(e,i,j):
+    return e[i].arrfloose[j]
+
+"need to be completed"
+def allocateElevator(call):
+    for i in range(len(elevators)):
+        if call.source < call.destination:
+            "if elevator going up we want to initializes the e[i].arrfloose so we can know where the elevator in eny given time"
+            "i will copmlete tomorrow i dont know what im doing anymore"
+
 
 
 
