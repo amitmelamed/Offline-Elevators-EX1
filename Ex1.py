@@ -54,7 +54,7 @@ def allocateElevator(call):
 
 
 class Elevator:
-    def __init__(self, id, speed, minFloor, maxFloor, closeTime, openTime, startTime, stopTime, arrfloose,pftime):
+    def __init__(self, id, speed, minFloor, maxFloor, closeTime, openTime, startTime, stopTime):
         self.id = id
         self.speed = speed
         self.minFloor = minFloor
@@ -65,8 +65,7 @@ class Elevator:
         self.stopTime = stopTime
         self.position = 0
         self.callsQueue = []
-        self.arrfloose = []
-        self.pftime = pftime
+
 
     def toString(self):
         return "id:" + str(self.id) + " speed:" + str(self.speed) + " minFloor:" + str(
@@ -99,7 +98,7 @@ class Call:
         return ("time:" + str(self.time) + " source:" + str(self.source) + " destination:" + str(
             self.destination) + " allocatedElevator:" + str(self.allocatedElevator))
     def calcTime(self,elevator):
-        calc=elevator.openTime+elevator.closeTime+speed*self.absFloor+abs(int(elevator.position)-int(call.source))
+        calc=elevator.openTime+elevator.closeTime+elevator.startTime+elevator.stopTime+speed*self.absFloor+abs(int(elevator.position)-int(call.source))
         calc=calc*len(elevator.callsQueue)
         return calc
 
@@ -126,10 +125,10 @@ maxFloor = obj['_maxFloor']
 
 "elevators is array that contains all the elevators in the building"
 "callsArr is an array that contains all the calls that we gets as input"
-"arrfloose is an array that tells us where are the elevators at any given second .... hopefully"
+
 elevators = []
 callsArr = []
-arrfloose = []
+
 
 "init elevators"
 for i in range(0, len(obj['_elevators'])):
@@ -141,11 +140,9 @@ for i in range(0, len(obj['_elevators'])):
     openTime = obj['_elevators'][i]['_openTime']
     startTime = obj['_elevators'][i]['_startTime']
     stopTime = obj['_elevators'][i]['_stopTime']
-    pftime = ((speed[i]*(maxFloor[i]-minFloor[i]))-startTime[i]-stopTime[i]-openTime[i]-closeTime[i])/(maxFloor[i]-minFloor[i])
-#    for j in range(0, (maxFloor[i]-minFloor[i])):
-#        arrfloose[j] += speed[i]
 
-    e = Elevator(id, speed, minFloor, maxFloor, closeTime, openTime, startTime, stopTime,arrfloose)
+
+    e = Elevator(id, speed, minFloor, maxFloor, closeTime, openTime, startTime, stopTime)
     elevators.append(e)
 
 "this function initializes the array in second from source floor to destination in up mode"
