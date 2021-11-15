@@ -7,7 +7,7 @@ from random import randrange
 from tkinter import *
 
 # to run the algorithem
-# python3 Ex1.py data/Ex1_input/Ex1_Buildings/B5.json data/Ex1_input/Ex1_Calls/Calls_a.csv output.csv
+# python3 Ex1.py Ex1_Buildings/B5.json Ex1_Calls/Calls_a.csv output.csv
 # to run the tester
 # java -jar libs/Ex1_checker_V1.2_obf.jar 1111,2222,3333 data/Ex1_input/Ex1_Buildings/B5.json output.csv out.log
 
@@ -53,7 +53,7 @@ def allocateElevator(call):
 "elevetor class:"
 "each elevator has id,speed,minFloor, maxFloor, closeTime, openTime, startTime, stopTime"
 class Elevator:
-    def __init__(self, id, speed, minFloor, maxFloor, closeTime, openTime, startTime, stopTime, arrfloose, pftime,mood):
+    def __init__(self, id, speed, minFloor, maxFloor, closeTime, openTime, startTime, stopTime, spf ,mood ,arrfloose: list = []):
         self.id = id
         self.speed = speed
         self.minFloor = minFloor
@@ -64,8 +64,8 @@ class Elevator:
         self.stopTime = stopTime
         self.position = 0
         self.callsQueue = []
-        self.arrfloose = []
-        self.pftime = pftime
+        self.arrfloose = arrfloose.copy
+        self.spf = spf
         self.mood = mood
         "mood up = 1 , mood down = 0"
 
@@ -131,6 +131,7 @@ elevators = []
 callsArr = []
 arrfloose = []
 
+
 "init elevators"
 for i in range(0, len(obj['_elevators'])):
     id = obj['_elevators'][i]['_id']
@@ -141,13 +142,16 @@ for i in range(0, len(obj['_elevators'])):
     openTime = obj['_elevators'][i]['_openTime']
     startTime = obj['_elevators'][i]['_startTime']
     stopTime = obj['_elevators'][i]['_stopTime']
-    pftime = ((speed[i] * (maxFloor[i] - minFloor[i])) - startTime[i] - stopTime[i] - openTime[i] - closeTime[i]) / (maxFloor[i] - minFloor[i])
+    spf = ((obj['_elevators'][i]['_speed']*(obj['_elevators'][i]['_maxFloor']-obj['_elevators'][i]['_minFloor']))-obj['_elevators'][i]['_startTime']-obj['_elevators'][i]['_stopTime']-obj['_elevators'][i]['_openTime']-obj['_elevators'][i]['_closeTime'])/(obj['_elevators'][i]['_maxFloor']-obj['_elevators'][i]['_minFloor'])
     mood = 1
-    for j in range(0, (maxFloor[i]-minFloor[i])):
-           arrfloose[j] += pftime[i]
+    arrfloose = arrfloose.copy()
 
-    e = Elevator(id, speed, minFloor, maxFloor, closeTime, openTime, startTime, stopTime, arrfloose,pftime,mood)
+    e = Elevator(id, speed, minFloor, maxFloor, closeTime, openTime, startTime, stopTime, arrfloose,spf,mood)
     elevators.append(e)
+
+for i in range(len(elevators)):
+   for j in range(e[i].maxFloor - e[i].minFloor):
+        e[i].arrfloose[j] += spf
 
 "this function initializes the array in second from source floor to destination in up mode"
 "so if the elevator took a given call we will know now the elevator floor/time in any given time/floor"
@@ -161,7 +165,7 @@ def up(call, i):
         e[i].arrfloose[call.source] += e[i].closeTime + e[i].openTime + e[i].stopTime + e[i].startTime
     for j in range(call.source, maxfloore):
         "the for need to by from call.source to maxfloore"
-        e[i].arrfloose[j + 1] = (e[i].arrfloose[j]+pftime[i])
+        e[i].arrfloose[j + 1] = (e[i].arrfloose[j]+e[i].spf)
 
 
 
@@ -176,7 +180,7 @@ def dowm(call, i):
     else:
         e[i].arrfloose[call.source] += e[i].closeTime + e[i].openTime + e[i].stopTime + e[i].startTime
     for j in range(call.source, e[i].minfloore):
-        e[i].arrfloose[j - 1] = (e[i].arrfloose[j]+pftime[i])
+        e[i].arrfloose[j - 1] = (e[i].arrfloose[j]+e[i].spf)
         "the for need to by from call.source to minfloore "
         "need to be i-- fixit"
 
