@@ -236,7 +236,7 @@ with open(output, "w", newline="") as f:
     writer.writerows(inputData)
 
 subprocess.Popen(["powershell.exe",
-                 "java -jar Ex1_checker_V1.2_obf.jar 1111,2222,3333 " + list[1] + " " + list[3] + " out.log"])
+                 "java -jar Ex1_checker_V1.2_obf.jar 316329069,207640806,209380922 " + list[1] + " " + list[3] + " out.log"])
 "GUI"
 # root = Tk()
 # C = Canvas(root, bg="yellow", height=600, width=400)

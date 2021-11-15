@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="61ccb575-1830-4028-aac3-423c2093c862" name="Default Changelist" comment="https://github.com/amitmelamed/Offline-Elevators-EX1.git">
-      <change afterPath="$PROJECT_DIR$/Ex1_attempt2.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/GUI.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Ex1.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ex1.py" afterDir="false" />
@@ -79,7 +78,13 @@
       <option name="presentableId" value="Default" />
       <updated>1636980821894</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL‎00002" summary="https://github.com/amitmelamed/Offline-Elevators-EX1.git">
+      <created>1637004552510</created>
+      <option name="number" value="LOCAL‎00002" />
+      <option name="presentableId" value="LOCAL‎00002" />
+      <updated>1637004552511</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
