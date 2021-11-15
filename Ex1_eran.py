@@ -107,7 +107,7 @@ class Call:
 "sys.argv is a function that gets the input from the terminal and puts its in an array"
 "buildint will be the string that represent building.json location that we want to use for input"
 "calls will be the string that represent calls.csv location that we want to use for input"
-"output will be the string that represent outPut.csv location that we want to use for output"
+"output will be the string that represent outPut.csv location that we want to use fo output"
 list = sys.argv
 building = list[1]
 calls = list[2]
@@ -159,9 +159,9 @@ def up(call, i):
                 call.time - e[i].arrfloose[call.source])
     else:
         e[i].arrfloose[call.source] += e[i].closeTime + e[i].openTime + e[i].stopTime + e[i].startTime
-    for j in range(call.source, call.destination):
+    for j in range(call.source, maxfloore):
         "the for need to by from call.source to maxfloore"
-        e[i].arrfloose[j + 1] += (e[i].arrfloose[j]+pftime[i])
+        e[i].arrfloose[j + 1] = (e[i].arrfloose[j]+pftime[i])
 
 
 
@@ -175,8 +175,8 @@ def dowm(call, i):
                 call.time - e[i].arrfloose[call.source])
     else:
         e[i].arrfloose[call.source] += e[i].closeTime + e[i].openTime + e[i].stopTime + e[i].startTime
-    for j in range(call.source, call.destination):
-        e[i].arrfloose[j + 1] += (e[i].arrfloose[j]+pftime[i])
+    for j in range(call.source, e[i].minfloore):
+        e[i].arrfloose[j - 1] = (e[i].arrfloose[j]+pftime[i])
         "the for need to by from call.source to minfloore "
         "need to be i-- fixit"
 
@@ -184,27 +184,33 @@ def dowm(call, i):
 def nearsource(call):
     mintime = call.time - e[0].arrfloose[0]
     minindex = 0
+    maxcallsQueue = 10
     if call.source < call.destination:
         for i in range(len(elevators)):
             temp = call.time - e[i].arrfloose[call.source]
-            if (temp >= 0):
+            if temp >= 0:
                 if temp <= mintime:
-                    if e[i].mood == 1:
-                        minindex = i
+                    if len(e[i].callsQueue) < maxcallsQueue:
+                        if e[i].mood == 1 or e[i].mood == 2:
+                            minindex = i
         up(call, minindex)
         elevatormood(call,minindex)
         "to know the mood precisely we need the callsArr of amit and with this combination we will allocatedElevator precisely"
     else:
         for i in range(len(elevators)):
             temp = call.time - e[i].arrfloose[call.source]
-            if (temp >= 0):
+            if temp >= 0:
                 if temp <= mintime:
-                    if e[i].mood == 0:
-                        minindex = i
+                    if len(e[i].callsQueue) < maxcallsQueue:
+                        if e[i].mood == 0 or e[i].mood == 2:
+                            minindex = i
         dowm(call, minindex)
         elevatormood(call, minindex)
 
     call.allocatedElevator = minIndex
+    elevators[minIndex].callsQueue.append(call)
+    clear(call)
+    elevatormood2(call, minindex)
 
 "now we want to to say that elevator i took the call and to defin up mode or down mode to elevator until destination"
 
@@ -221,13 +227,24 @@ def curentFloor(e, i, j):
     return e[i].arrfloose[j]
 
 def elevatormood(call,i):
-    for i in range(len(elevators)):
         if call.source < call.destination:
             e[i].mood = 1
         else:
             e[i].mood = 0
 
+def elevatormood2(call,i):
+    if call.time > e[i].arrfloose[e[i].callsQueue[(len(e[i].callsQueue)-1)].destination]:
+        e[i].mood == 2
 "need to be completed"
+
+
+
+def clear(call):
+    for e in elevators:
+        e.clearCompleteCalls(call)
+
+
+
 def allocateElevatorEran(call):
     for i in range(len(elevators)):
         if call.source < call.destination:
@@ -245,7 +262,7 @@ with open(calls) as f:
 "row[4] represant allocated elevator"
 "we will want to edit row[4] in our output file with the given call as input for allocatedElevator function"
 for i in callsArr:
-    allocateElevator(i)
+    nearsource(i)
 
 inputData = []
 for i in callsArr:
