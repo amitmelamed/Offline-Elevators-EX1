@@ -128,13 +128,13 @@ class Call:
     def calcTime(self, elevator):
         calc = elevator.openTime * 2 + elevator.closeTime * 2 + elevator.startTime * 10 + elevator.stopTime * 10 + speed * self.absFloor + abs(
             int(elevator.position) - int(self.source))
-        calc = calc * (len(elevator.callsQueue) + 5)
+        calc = calc * (len(elevator.callsQueue) +5)
         return calc
 
     def calcTimeMedium(self, elevator):
         calc = elevator.openTime  + elevator.closeTime + elevator.startTime*10  + elevator.stopTime*10  + speed * self.absFloor + abs(
             int(elevator.position) - int(self.source))
-        calc = calc * (len(elevator.callsQueue)+15 )
+        calc = calc * (len(elevator.callsQueue)+15)
         return calc
 
 
