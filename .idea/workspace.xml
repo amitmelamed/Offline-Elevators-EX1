@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="61ccb575-1830-4028-aac3-423c2093c862" name="Default Changelist" comment="https://github.com/amitmelamed/Offline-Elevators-EX1.git">
-      <change afterPath="$PROJECT_DIR$/GUI.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ex1.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ex1.py" afterDir="false" />
+    <list default="true" id="61ccb575-1830-4028-aac3-423c2093c862" name="Default Changelist" comment="added function to medium buildings (B4)">
       <change beforePath="$PROJECT_DIR$/out.log" beforeDir="false" afterPath="$PROJECT_DIR$/out.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/output.csv" beforeDir="false" afterPath="$PROJECT_DIR$/output.csv" afterDir="false" />
     </list>
@@ -90,7 +87,19 @@
       <option name="presentableId" value="LOCAL‎00003" />
       <updated>1637008183394</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL‎00004" summary="added function to medium buildings (B4)">
+      <created>1637063152673</created>
+      <option name="number" value="LOCAL‎00004" />
+      <option name="presentableId" value="LOCAL‎00004" />
+      <updated>1637063152673</updated>
+    </task>
+    <task id="LOCAL‎00005" summary="added function to medium buildings (B4)">
+      <created>1637063218877</created>
+      <option name="number" value="LOCAL‎00005" />
+      <option name="presentableId" value="LOCAL‎00005" />
+      <updated>1637063218877</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -107,6 +116,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="https://github.com/amitmelamed/Offline-Elevators-EX1.git" />
-    <option name="LAST_COMMIT_MESSAGE" value="https://github.com/amitmelamed/Offline-Elevators-EX1.git" />
+    <MESSAGE value="added function to medium buildings (B4)" />
+    <option name="LAST_COMMIT_MESSAGE" value="added function to medium buildings (B4)" />
   </component>
 </project>
