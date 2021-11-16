@@ -14,7 +14,7 @@ from tkinter import *
 
 # "function that gets a call and returns allocated elevator"
 #
-# "very stupid algoritem that works good for buildings with 2 elevators"
+"very stupid algoritem that works good for buildings with 2 elevators"
 # def allocateElevatorB3(call):
 #     fastElevatorIndex = 0
 #     slowElevatorIndex = 1
@@ -22,7 +22,7 @@ from tkinter import *
 #         fastElevatorIndex = 1
 #         slowElevatorIndex = 0
 #     floorsCount = maxFloor - minFloor
-#
+
 #     if (int(call.destination) < floorsCount / 3):
 #         call.allocatedElevator = slowElevatorIndex
 #     else:
@@ -171,7 +171,7 @@ def up(call, i):
                 float(call.time) - elevators[i].arrfloose[int(call.source)-elevators[i].minFloor])
     else:
         elevators[i].arrfloose[int(call.source)-elevators[i].minFloor] += elevators[i].closeTime + elevators[i].openTime + elevators[i].stopTime + elevators[i].startTime
-    for j in range(int(call.source), (elevators[i].maxFloor)):
+    for j in range(int(call.source), elevators[i].maxFloor):
         "the for need to by from call.source to maxfloore"
         elevators[i].arrfloose[(j-elevators[i].minFloor) + 1] = (elevators[i].arrfloose[j-elevators[i].minFloor]+elevators[i].spf)
 
@@ -188,7 +188,7 @@ def dowm(call, i):
     else:
         elevators[i].arrfloose[int(call.source)-elevators[i].minFloor] += elevators[i].closeTime + elevators[i].openTime + elevators[i].stopTime + elevators[i].startTime
         'i = i + any'
-    for j in range(int(call.source), elevators[i].minFloor):
+    for j in range(int(call.source), 0):
         elevators[i].arrfloose[(j-elevators[i].minFloor) - 1] = (elevators[i].arrfloose[j-elevators[i].minFloor]+elevators[i].spf)
         "the for need to by from call.source to minfloore "
         "need to be i-- fixit"
@@ -197,7 +197,7 @@ def dowm(call, i):
 def nearsource(call):
     mintime = float(call.time) - elevators[0].arrfloose[0]
     minindex = 0
-    maxcallsQueue = 10
+    maxcallsQueue = 4
     if int(call.source) < int(call.destination):
         for i in range(len(elevators)):
             temp = float(call.time) - elevators[i].arrfloose[int(call.source)-elevators[i].minFloor]
