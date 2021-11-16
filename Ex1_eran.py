@@ -7,7 +7,7 @@ from random import randrange
 from tkinter import *
 
 # to run the algorithem
-# python3 Ex1.py data/Ex1_input/Ex1_Buildings/B5.json data/Ex1_input/Ex1_Calls/Calls_a.csv output.csv
+# python3 Ex1.py Ex1_Buildings/B5.json Ex1_Calls/Calls_a.csv output.csv
 # to run the tester
 # java -jar libs/Ex1_checker_V1.2_obf.jar 1111,2222,3333 data/Ex1_input/Ex1_Buildings/B5.json output.csv out.log
 
@@ -53,7 +53,7 @@ def allocateElevator(call):
 "elevetor class:"
 "each elevator has id,speed,minFloor, maxFloor, closeTime, openTime, startTime, stopTime"
 class Elevator:
-    def __init__(self, id, speed, minFloor, maxFloor, closeTime, openTime, startTime, stopTime, arrfloose, pftime,mood):
+    def __init__(self, id, speed, minFloor, maxFloor, closeTime, openTime, startTime, stopTime, spf ,mood ,arrfloose: list = []):
         self.id = id
         self.speed = speed
         self.minFloor = minFloor
@@ -64,8 +64,8 @@ class Elevator:
         self.stopTime = stopTime
         self.position = 0
         self.callsQueue = []
-        self.arrfloose = []
-        self.pftime = pftime
+        self.arrfloose = arrfloose.copy
+        self.spf = spf
         self.mood = mood
         "mood up = 1 , mood down = 0"
 
@@ -107,7 +107,7 @@ class Call:
 "sys.argv is a function that gets the input from the terminal and puts its in an array"
 "buildint will be the string that represent building.json location that we want to use for input"
 "calls will be the string that represent calls.csv location that we want to use for input"
-"output will be the string that represent outPut.csv location that we want to use for output"
+"output will be the string that represent outPut.csv location that we want to use fo output"
 list = sys.argv
 building = list[1]
 calls = list[2]
@@ -131,6 +131,7 @@ elevators = []
 callsArr = []
 arrfloose = []
 
+
 "init elevators"
 for i in range(0, len(obj['_elevators'])):
     id = obj['_elevators'][i]['_id']
@@ -141,13 +142,16 @@ for i in range(0, len(obj['_elevators'])):
     openTime = obj['_elevators'][i]['_openTime']
     startTime = obj['_elevators'][i]['_startTime']
     stopTime = obj['_elevators'][i]['_stopTime']
-    pftime = ((speed[i] * (maxFloor[i] - minFloor[i])) - startTime[i] - stopTime[i] - openTime[i] - closeTime[i]) / (maxFloor[i] - minFloor[i])
+    spf = ((obj['_elevators'][i]['_speed']*(obj['_elevators'][i]['_maxFloor']-obj['_elevators'][i]['_minFloor']))-obj['_elevators'][i]['_startTime']-obj['_elevators'][i]['_stopTime']-obj['_elevators'][i]['_openTime']-obj['_elevators'][i]['_closeTime'])/(obj['_elevators'][i]['_maxFloor']-obj['_elevators'][i]['_minFloor'])
     mood = 1
-    for j in range(0, (maxFloor[i]-minFloor[i])):
-           arrfloose[j] += pftime[i]
+    arrfloose = arrfloose.copy()
 
-    e = Elevator(id, speed, minFloor, maxFloor, closeTime, openTime, startTime, stopTime, arrfloose,pftime,mood)
+    e = Elevator(id, speed, minFloor, maxFloor, closeTime, openTime, startTime, stopTime, arrfloose,spf,mood)
     elevators.append(e)
+
+for i in range(len(elevators)):
+   for j in range(e[i].maxFloor - e[i].minFloor):
+        e[i].arrfloose[j] += spf
 
 "this function initializes the array in second from source floor to destination in up mode"
 "so if the elevator took a given call we will know now the elevator floor/time in any given time/floor"
@@ -159,9 +163,9 @@ def up(call, i):
                 call.time - e[i].arrfloose[call.source])
     else:
         e[i].arrfloose[call.source] += e[i].closeTime + e[i].openTime + e[i].stopTime + e[i].startTime
-    for j in range(call.source, call.destination):
+    for j in range(call.source, maxfloore):
         "the for need to by from call.source to maxfloore"
-        e[i].arrfloose[j + 1] += (e[i].arrfloose[j]+pftime[i])
+        e[i].arrfloose[j + 1] = (e[i].arrfloose[j]+e[i].spf)
 
 
 
@@ -175,8 +179,8 @@ def dowm(call, i):
                 call.time - e[i].arrfloose[call.source])
     else:
         e[i].arrfloose[call.source] += e[i].closeTime + e[i].openTime + e[i].stopTime + e[i].startTime
-    for j in range(call.source, call.destination):
-        e[i].arrfloose[j + 1] += (e[i].arrfloose[j]+pftime[i])
+    for j in range(call.source, e[i].minfloore):
+        e[i].arrfloose[j - 1] = (e[i].arrfloose[j]+e[i].spf)
         "the for need to by from call.source to minfloore "
         "need to be i-- fixit"
 
@@ -184,27 +188,33 @@ def dowm(call, i):
 def nearsource(call):
     mintime = call.time - e[0].arrfloose[0]
     minindex = 0
+    maxcallsQueue = 10
     if call.source < call.destination:
         for i in range(len(elevators)):
             temp = call.time - e[i].arrfloose[call.source]
-            if (temp >= 0):
+            if temp >= 0:
                 if temp <= mintime:
-                    if e[i].mood == 1:
-                        minindex = i
+                    if len(e[i].callsQueue) < maxcallsQueue:
+                        if e[i].mood == 1 or e[i].mood == 2:
+                            minindex = i
         up(call, minindex)
         elevatormood(call,minindex)
         "to know the mood precisely we need the callsArr of amit and with this combination we will allocatedElevator precisely"
     else:
         for i in range(len(elevators)):
             temp = call.time - e[i].arrfloose[call.source]
-            if (temp >= 0):
+            if temp >= 0:
                 if temp <= mintime:
-                    if e[i].mood == 0:
-                        minindex = i
+                    if len(e[i].callsQueue) < maxcallsQueue:
+                        if e[i].mood == 0 or e[i].mood == 2:
+                            minindex = i
         dowm(call, minindex)
         elevatormood(call, minindex)
 
     call.allocatedElevator = minIndex
+    elevators[minIndex].callsQueue.append(call)
+    clear(call)
+    elevatormood2(call, minindex)
 
 "now we want to to say that elevator i took the call and to defin up mode or down mode to elevator until destination"
 
@@ -221,13 +231,24 @@ def curentFloor(e, i, j):
     return e[i].arrfloose[j]
 
 def elevatormood(call,i):
-    for i in range(len(elevators)):
         if call.source < call.destination:
             e[i].mood = 1
         else:
             e[i].mood = 0
 
+def elevatormood2(call,i):
+    if call.time > e[i].arrfloose[e[i].callsQueue[(len(e[i].callsQueue)-1)].destination]:
+        e[i].mood == 2
 "need to be completed"
+
+
+
+def clear(call):
+    for e in elevators:
+        e.clearCompleteCalls(call)
+
+
+
 def allocateElevatorEran(call):
     for i in range(len(elevators)):
         if call.source < call.destination:
@@ -245,7 +266,7 @@ with open(calls) as f:
 "row[4] represant allocated elevator"
 "we will want to edit row[4] in our output file with the given call as input for allocatedElevator function"
 for i in callsArr:
-    allocateElevator(i)
+    nearsource(i)
 
 inputData = []
 for i in callsArr:
