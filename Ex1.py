@@ -34,12 +34,31 @@ def allocateElevatorB3(call):
 "function that gets a call and returns allocated elevator"
 
 
+def allocateElevatorMedium(call):
+    minTime = call.calcTimeMedium(elevators[0])
+    minIndex = 0
+    for i in range(len(elevators)):
+        currentTime = call.calcTimeMedium(elevators[i])
+        if (currentTime < minTime):
+            minTime = currentTime
+            minIndex = i
+    call.allocatedElevator = minIndex
+    elevators[minIndex].position = call.destination
+    elevators[minIndex].callsQueue.append(call)
+    elevators[minIndex].fullCallsQueue.append(call)
+    for e in elevators:
+        e.clearCompleteCalls(call)
+
+
+
 def allocateElevator(call):
     "we check if we have only 2 elevators we will use better algoritem for small buildings"
     if (len(elevators) == 2 and abs(maxFloor - minFloor) > 100):
         allocateElevatorB3(call)
         return
-
+    if(len(elevators)<6):
+        allocateElevatorMedium(call)
+        return
     minTime = call.calcTime(elevators[0])
     minIndex = 0
     for i in range(len(elevators)):
@@ -107,9 +126,15 @@ class Call:
             self.destination) + " allocatedElevator:" + str(self.allocatedElevator))
 
     def calcTime(self, elevator):
-        calc =elevator.openTime*2 + elevator.closeTime*2 + elevator.startTime*10 + elevator.stopTime*10 + speed * self.absFloor + abs(
+        calc = elevator.openTime * 2 + elevator.closeTime * 2 + elevator.startTime * 10 + elevator.stopTime * 10 + speed * self.absFloor + abs(
             int(elevator.position) - int(self.source))
-        calc = calc * (len(elevator.callsQueue)+5)
+        calc = calc * (len(elevator.callsQueue) + 5)
+        return calc
+
+    def calcTimeMedium(self, elevator):
+        calc = elevator.openTime  + elevator.closeTime + elevator.startTime*10  + elevator.stopTime*10  + speed * self.absFloor + abs(
+            int(elevator.position) - int(self.source))
+        calc = calc * (len(elevator.callsQueue)+15 )
         return calc
 
 
@@ -236,7 +261,8 @@ with open(output, "w", newline="") as f:
     writer.writerows(inputData)
 
 subprocess.Popen(["powershell.exe",
-                 "java -jar Ex1_checker_V1.2_obf.jar 316329069,207640806,209380922 " + list[1] + " " + list[3] + " out.log"])
+                  "java -jar Ex1_checker_V1.2_obf.jar 316329069,207640806,209380922 " + list[1] + " " + list[
+                      3] + " out.log"])
 "GUI"
 # root = Tk()
 # C = Canvas(root, bg="yellow", height=600, width=400)
@@ -251,5 +277,3 @@ subprocess.Popen(["powershell.exe",
 
 # C.pack()
 # mainloop()
-
-
