@@ -186,5 +186,5 @@ with open(output, "w", newline="") as f:
     writer = csv.writer(f)
     writer.writerows(inputData)
 #if you want to run the simulator after running the proggram uncommand this line
-subprocess.Popen(["powershell.exe","java -jar Ex1_checker_V1.2_obf.jar 316329069,207640806,209380922 " + list[1] + " " + list[3] + " out.log"])
+#subprocess.Popen(["powershell.exe","java -jar Ex1_checker_V1.2_obf.jar 316329069,207640806,209380922 " + list[1] + " " + list[3] + " out.log"])
 
