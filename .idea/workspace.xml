@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="61ccb575-1830-4028-aac3-423c2093c862" name="Default Changelist" comment="added function to medium buildings (B4)">
+    <list default="true" id="61ccb575-1830-4028-aac3-423c2093c862" name="Default Changelist" comment="finished Ex1.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Ex1.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ex1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUI.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out.log" beforeDir="false" afterPath="$PROJECT_DIR$/out.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output.csv" beforeDir="false" afterPath="$PROJECT_DIR$/output.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +113,19 @@
       <option name="presentableId" value="LOCAL‎00007" />
       <updated>1637083211552</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL‎00008" summary="finished Ex1.py">
+      <created>1637145486593</created>
+      <option name="number" value="LOCAL‎00008" />
+      <option name="presentableId" value="LOCAL‎00008" />
+      <updated>1637145486593</updated>
+    </task>
+    <task id="LOCAL‎00009" summary="finished Ex1.py">
+      <created>1637145672711</created>
+      <option name="number" value="LOCAL‎00009" />
+      <option name="presentableId" value="LOCAL‎00009" />
+      <updated>1637145672711</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -130,6 +143,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="https://github.com/amitmelamed/Offline-Elevators-EX1.git" />
     <MESSAGE value="added function to medium buildings (B4)" />
-    <option name="LAST_COMMIT_MESSAGE" value="added function to medium buildings (B4)" />
+    <MESSAGE value="finished Ex1.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="finished Ex1.py" />
   </component>
 </project>

@@ -111,13 +111,13 @@ class Call:
             self.destination) + " allocatedElevator:" + str(self.allocatedElevator))
 
     def calcTime(self, elevator):
-        calc = elevator.openTime * 2 + elevator.closeTime * 2 + elevator.startTime * 10 + elevator.stopTime * 10 + speed * self.absFloor + abs(
+        calc = elevator.openTime * 15 + elevator.closeTime * 15 + elevator.startTime * 10 + elevator.stopTime * 10 + speed * self.absFloor + abs(
             int(elevator.position) - int(self.source))
         calc = calc * (len(elevator.callsQueue) +5)
         return calc
 
     def calcTimeMedium(self, elevator):
-        calc = elevator.openTime  + elevator.closeTime + elevator.startTime*10  + elevator.stopTime*10  + speed * self.absFloor + abs(
+        calc = elevator.openTime*2  + elevator.closeTime*2 + elevator.startTime*10  + elevator.stopTime*10  + speed * self.absFloor + abs(
             int(elevator.position) - int(self.source))
         calc = calc * (len(elevator.callsQueue)+15)
         return calc
@@ -186,5 +186,5 @@ with open(output, "w", newline="") as f:
     writer = csv.writer(f)
     writer.writerows(inputData)
 #if you want to run the simulator after running the proggram uncommand this line
-#subprocess.Popen(["powershell.exe","java -jar Ex1_checker_V1.2_obf.jar 316329069,207640806,209380922 " + list[1] + " " + list[3] + " out.log"])
+subprocess.Popen(["powershell.exe","java -jar Ex1_checker_V1.2_obf.jar 316329069,207640806,209380922 " + list[1] + " " + list[3] + " out.log"])
 
