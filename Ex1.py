@@ -12,12 +12,8 @@ from tkinter import *
 # java -jar libs/Ex1_checker_V1.2_obf.jar 1111,2222,3333 data/Ex1_input/Ex1_Buildings/B5.json output.csv out.log
 
 
-"function that gets a call and returns allocated elevator"
-
-"very stupid algoritem that works good for buildings with 2 elevators"
-
-
-def allocateElevatorB3(call):
+"function that gets a call and returns allocated elevator for 2 elevators buildings"
+def allocateElevatorFor2Elevators(call):
     fastElevatorIndex = 0
     slowElevatorIndex = 1
     if (float(elevators[0].speed) > float(elevators[1].speed)):
@@ -30,10 +26,7 @@ def allocateElevatorB3(call):
     else:
         call.allocatedElevator = fastElevatorIndex
 
-
-"function that gets a call and returns allocated elevator"
-
-
+"function that gets a call and returns allocated elevator for medium buildings"
 def allocateElevatorMedium(call):
     minTime = call.calcTimeMedium(elevators[0])
     minIndex = 0
@@ -45,16 +38,14 @@ def allocateElevatorMedium(call):
     call.allocatedElevator = minIndex
     elevators[minIndex].position = call.destination
     elevators[minIndex].callsQueue.append(call)
-    elevators[minIndex].fullCallsQueue.append(call)
     for e in elevators:
         e.clearCompleteCalls(call)
 
-
-
+"function that gets a call and returns allocated elevator"
 def allocateElevator(call):
     "we check if we have only 2 elevators we will use better algoritem for small buildings"
     if (len(elevators) == 2 and abs(maxFloor - minFloor) > 100):
-        allocateElevatorB3(call)
+        allocateElevatorFor2Elevators(call)
         return
     if(len(elevators)<6):
         allocateElevatorMedium(call)
@@ -69,15 +60,12 @@ def allocateElevator(call):
     call.allocatedElevator = minIndex
     elevators[minIndex].position = call.destination
     elevators[minIndex].callsQueue.append(call)
-    elevators[minIndex].fullCallsQueue.append(call)
     for e in elevators:
         e.clearCompleteCalls(call)
 
 
-"elevetor class:"
+"elevator class:"
 "each elevator has id,speed,minFloor, maxFloor, closeTime, openTime, startTime, stopTime"
-
-
 class Elevator:
     def __init__(self, id, speed, minFloor, maxFloor, closeTime, openTime, startTime, stopTime):
         self.id = id
@@ -90,7 +78,6 @@ class Elevator:
         self.stopTime = stopTime
         self.position = 0
         self.callsQueue = []
-        self.fullCallsQueue = []
 
     def toString(self):
         return "id:" + str(self.id) + " speed:" + str(self.speed) + " minFloor:" + str(
@@ -111,8 +98,6 @@ class Elevator:
 
 
 "call class: each call has time, source, destination, allocatedElevator"
-
-
 class Call:
     def __init__(self, time, source, destination, allocatedElevator):
         self.time = time
@@ -150,8 +135,6 @@ output = list[3]
 "we will read building.json file and will get the necessary input to our own variables"
 with open(building) as myfile:
     data = myfile.read()
-
-# parse file
 obj = json.loads(data)
 
 "now we have our building.json file int obj variable and gets from it minFloor maxFloor and elevators"
@@ -178,63 +161,6 @@ for i in range(0, len(obj['_elevators'])):
     e = Elevator(id, speed, minFloor, maxFloor, closeTime, openTime, startTime, stopTime)
     elevators.append(e)
 
-"this function initializes the array in second from source floor to destination in up mode"
-"so if the elevator took a given call we will know now the elevator floor/time in any given time/floor"
-"it doesnt need to go all over evey elevator arr only the one who took the call"
-
-
-def up(call, i):
-    # for i in range(len(elevators)):
-    if call.time != e[i].arrfloose[call.source]:
-        e[i].arrfloose[call.source] += e[i].stopTime + e[i].openTime + e[i].closeTimee + e[i].startTime + (
-                call.time - e[i].arrfloose[call.source])
-    else:
-        e[i].arrfloose[call.source] += e[i].closeTime + e[i].openTime + e[i].stopTime + e[i].startTime
-    for j in range(call.source, call.destination):
-        e[i].arrfloose[j + 1] += e[i].arrfloose[j]
-
-
-"this function initializes the array in second from source floor to destination in down mode"
-"so if the elevator took a given call we will know now the elevator floor/time in any given time/floor until the elevator will arrive to her destination"
-"it doesnt need to go all over evey elevator arr only the one who took the call"
-
-
-def dowm(call, i):
-    # for i in range(len(elevators)):
-    if call.time != e[i].arrfloose[call.source]:
-        e[i].arrfloose[call.source] += e[i].stopTime + e[i].openTime + e[i].closeTimee + e[i].startTime + (
-                call.time - e[i].arrfloose[call.source])
-    else:
-        e[i].arrfloose[call.source] += e[i].closeTime + e[i].openTime + e[i].stopTime + e[i].startTime
-    for j in range(call.source, call.destination):
-        e[i].arrfloose[j + 1] += e[i].arrfloose[j]
-        "need to be i-- fixit"
-
-
-def nearsource(call, i):
-    for i in range(len(elevators)):
-        "we want to go over all elevators to see which one closer to call.source be given call.time and compering it to e[i].arrfloose[correnfloor]"
-        "we need also to check if the elevator is going to source direction (up or down) so we will know if its worth to this elevator to take the call"
-        "did not complete"
-        "i'm tired and can't think"
-
-
-"this function returns what is the time of elevator in the i elevator and j floor"  "need to be fixed"
-"we can also return the curent floor by given call.time"
-
-
-def curentFloor(e, i, j):
-    return e[i].arrfloose[j]
-
-
-"need to be completed"
-
-
-def allocateElevatorEran(call):
-    for i in range(len(elevators)):
-        if call.source < call.destination:
-            "if elevator going up we want to initializes the e[i].arrfloose so we can know where the elevator in eny given time"
-            "i will copmlete tomorrow i dont know what im doing anymore"
 
 
 "init calls"
@@ -259,21 +185,6 @@ for i in callsArr:
 with open(output, "w", newline="") as f:
     writer = csv.writer(f)
     writer.writerows(inputData)
+#if you want to run the simulator after running the proggram uncommand this line
+subprocess.Popen(["powershell.exe","java -jar Ex1_checker_V1.2_obf.jar 316329069,207640806,209380922 " + list[1] + " " + list[3] + " out.log"])
 
-subprocess.Popen(["powershell.exe",
-                  "java -jar Ex1_checker_V1.2_obf.jar 316329069,207640806,209380922 " + list[1] + " " + list[
-                      3] + " out.log"])
-"GUI"
-# root = Tk()
-# C = Canvas(root, bg="yellow", height=600, width=400)
-# C.create_rectangle(20, 20, 380, 470)
-# numbersOfFloors = abs(minFloor - maxFloor)
-# deltaFloor = 500 / numbersOfFloors
-# deltaElevators = 360 / len(elevators)
-# for i in range(0, numbersOfFloors):
-#    C.create_line(20, 20 + deltaFloor * i, 380, 20 + deltaFloor * i)
-# for i in range(0, len(elevators)):
-#    C.create_line(20 + deltaElevators * i, 20, 20 + deltaElevators * i, 470)
-
-# C.pack()
-# mainloop()
