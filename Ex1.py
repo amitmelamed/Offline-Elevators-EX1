@@ -2,15 +2,14 @@ import subprocess
 import sys
 import json
 import csv
-from random import randrange
+from Elevator import Elevator
+from Call import Call
 
-from tkinter import *
 
-# to run the algorithem
+# to run the algorithm
 # python3 Ex1.py data/Ex1_input/Ex1_Buildings/B5.json data/Ex1_input/Ex1_Calls/Calls_a.csv output.csv
 # to run the tester
 # java -jar libs/Ex1_checker_V1.2_obf.jar 1111,2222,3333 data/Ex1_input/Ex1_Buildings/B5.json output.csv out.log
-
 
 "function that gets a call and returns allocated elevator for 2 elevators buildings"
 def allocateElevatorFor2Elevators(call):
@@ -44,7 +43,7 @@ def allocateElevatorMedium(call):
 "function that gets a call and returns allocated elevator"
 def allocateElevator(call):
     "we check if we have only 2 elevators we will use better algoritem for small buildings"
-    if (len(elevators) == 2 and abs(maxFloor - minFloor) > 100):
+    if (len(elevators) == 2 and abs(maxFloor - minFloor) > 80):
         allocateElevatorFor2Elevators(call)
         return
     if(len(elevators)<6):
@@ -62,66 +61,6 @@ def allocateElevator(call):
     elevators[minIndex].callsQueue.append(call)
     for e in elevators:
         e.clearCompleteCalls(call)
-
-
-"elevator class:"
-"each elevator has id,speed,minFloor, maxFloor, closeTime, openTime, startTime, stopTime"
-class Elevator:
-    def __init__(self, id, speed, minFloor, maxFloor, closeTime, openTime, startTime, stopTime):
-        self.id = id
-        self.speed = speed
-        self.minFloor = minFloor
-        self.maxFloor = maxFloor
-        self.closeTime = closeTime
-        self.openTime = openTime
-        self.startTime = startTime
-        self.stopTime = stopTime
-        self.position = 0
-        self.callsQueue = []
-
-    def toString(self):
-        return "id:" + str(self.id) + " speed:" + str(self.speed) + " minFloor:" + str(
-            self.minFloor) + " maxFloor:" + str(self.maxFloor) + " closeTime:" + str(
-            self.closeTime) + " openTime:" + str(self.openTime) + " startTime:" + str(
-            self.startTime) + " stopTime:" + str(self.stopTime) + "position: " + str(self.position)
-
-    def clearCompleteCalls(self, call):
-        count = 0
-        for i in self.callsQueue:
-            if (float(i.time) < float(call.time) - 30):
-                count = count + 1
-        for i in range(count):
-            self.callsQueue.pop(0)
-
-    def calcPosition(self):
-        self.position
-
-
-"call class: each call has time, source, destination, allocatedElevator"
-class Call:
-    def __init__(self, time, source, destination, allocatedElevator):
-        self.time = time
-        self.source = source
-        self.destination = destination
-        self.allocatedElevator = allocatedElevator
-        self.absFloor = abs(int(source) - int(destination))
-
-    def toString(self):
-        return ("time:" + str(self.time) + " source:" + str(self.source) + " destination:" + str(
-            self.destination) + " allocatedElevator:" + str(self.allocatedElevator))
-
-    def calcTime(self, elevator):
-        calc = elevator.openTime * 15 + elevator.closeTime * 15 + elevator.startTime * 10 + elevator.stopTime * 10 + speed * self.absFloor + abs(
-            int(elevator.position) - int(self.source))
-        calc = calc * (len(elevator.callsQueue) +5)
-        return calc
-
-    def calcTimeMedium(self, elevator):
-        calc = elevator.openTime*2  + elevator.closeTime*2 + elevator.startTime*10  + elevator.stopTime*10  + speed * self.absFloor + abs(
-            int(elevator.position) - int(self.source))
-        calc = calc * (len(elevator.callsQueue)+15)
-        return calc
-
 
 "sys.argv is a function that gets the input from the terminal and puts its in an array"
 "buildint will be the string that represent building.json location that we want to use for input"
@@ -161,8 +100,6 @@ for i in range(0, len(obj['_elevators'])):
     e = Elevator(id, speed, minFloor, maxFloor, closeTime, openTime, startTime, stopTime)
     elevators.append(e)
 
-
-
 "init calls"
 with open(calls) as f:
     reader = csv.reader(f)
@@ -185,5 +122,5 @@ for i in callsArr:
 with open(output, "w", newline="") as f:
     writer = csv.writer(f)
     writer.writerows(inputData)
-#if you want to run the simulator after running the proggram uncommand this line
-subprocess.Popen(["powershell.exe","java -jar Ex1_checker_V1.2_obf.jar 316329069,207640806,209380922 " + list[1] + " " + list[3] + " out.log"])
+#if you want to run the simulator after running the program use this line:
+#subprocess.Popen(["powershell.exe","java -jar Ex1_checker_V1.2_obf.jar 316329069,207640806,209380922 " + list[1] + " " + list[3] + " out.log"])
