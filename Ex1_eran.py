@@ -22,12 +22,12 @@ from tkinter import *
 #         fastElevatorIndex = 1
 #         slowElevatorIndex = 0
 #     floorsCount = maxFloor - minFloor
-
+#
 #     if (int(call.destination) < floorsCount / 3):
 #         call.allocatedElevator = slowElevatorIndex
 #     else:
 #         call.allocatedElevator = fastElevatorIndex
-#
+# #
 #
 # "function that gets a call and returns allocated elevator"
 # def allocateElevator(call):
@@ -142,22 +142,21 @@ for i in range(0, len(obj['_elevators'])):
     openTime = obj['_elevators'][i]['_openTime']
     startTime = obj['_elevators'][i]['_startTime']
     stopTime = obj['_elevators'][i]['_stopTime']
-    spf = 0
-#     spf = float((obj['_elevators'][i]['_speed']*(obj['_elevators'][i]['_maxFloor']
-# -obj['_elevators'][i]['_minFloor']))-obj['_elevators'][i]['_startTime']
-# -obj['_elevators'][i]['_stopTime']-obj['_elevators'][i]['_openTime']
-# -obj['_elevators'][i]['_closeTime'])/(obj['_elevators'][i]['_maxFloor']
-# -obj['_elevators'][i]['_minFloor'])
-#     " stf = ((speed*(maxFloor-minFloor))-startTime-stopTime-openTime-closeTime)/(maxFloor-minFloor)"
-#
+    spf = float((obj['_elevators'][i]['_speed']*(obj['_elevators'][i]['_maxFloor']
+-obj['_elevators'][i]['_minFloor']))-obj['_elevators'][i]['_startTime']
+-obj['_elevators'][i]['_stopTime']-obj['_elevators'][i]['_openTime']
+-obj['_elevators'][i]['_closeTime'])/(obj['_elevators'][i]['_maxFloor']
+-obj['_elevators'][i]['_minFloor'])
+    " stf = ((speed*(maxFloor-minFloor))-startTime-stopTime-openTime-closeTime)/(maxFloor-minFloor)"
+    "???????????????20"
     mood = 2
     e = Elevator(id, speed, minFloor, maxFloor, closeTime, openTime, startTime, stopTime,spf,mood)
     elevators.append(e)
 
-    spf = ((e.speed*(e.maxFloor-e.minFloor))-e.startTime-e.stopTime-e.openTime-e.closeTime)/(e.maxFloor-e.minFloor)
-    for j in range(0, (e.maxFloor - e.minFloor)+1):
-         e.arrfloose.append(spf*j)
+    # spf = ((e.speed*(e.maxFloor-e.minFloor))-e.startTime-e.stopTime-e.openTime-e.closeTime)/(e.maxFloor-e.minFloor)
 
+    for j in range(0 ,((obj['_elevators'][i]['_maxFloor']-obj['_elevators'][i]['_minFloor']))+1):
+        elevators[i].arrfloose.append((elevators[i].spf)*j)
 
 
 
@@ -165,15 +164,15 @@ for i in range(0, len(obj['_elevators'])):
 "so if the elevator took a given call we will know now the elevator floor/time in any given time/floor"
 "it doesnt need to go all over evey elevator arr only the one who took the call"
 def up(call, i):
-    # for i in range(len(elevators)):
     if float(call.time) != elevators[i].arrfloose[int(call.source)-elevators[i].minFloor]:
         elevators[i].arrfloose[int(call.source)-elevators[i].minFloor] += elevators[i].stopTime + elevators[i].openTime + elevators[i].closeTime + elevators[i].startTime + (
                 float(call.time) - elevators[i].arrfloose[int(call.source)-elevators[i].minFloor])
+        elevators[i].arrfloose[int(call.destination)-elevators[i].minFloor] += elevators[i].stopTime + elevators[i].openTime + elevators[i].closeTime
     else:
-        elevators[i].arrfloose[int(call.source)-elevators[i].minFloor] += elevators[i].closeTime + elevators[i].openTime + elevators[i].stopTime + elevators[i].startTime
-    for j in range(int(call.source), elevators[i].maxFloor):
-        "the for need to by from call.source to maxfloore"
-        elevators[i].arrfloose[(j-elevators[i].minFloor) + 1] = (elevators[i].arrfloose[j-elevators[i].minFloor]+elevators[i].spf)
+        elevators[i].arrfloose[int(call.source)-elevators[i].minFloor] += elevators[i].closeTime + elevators[i].openTime + elevators[i].startTime
+        elevators[i].arrfloose[int(call.destination) - elevators[i].minFloor] += elevators[i].stopTime + elevators[i].openTime + elevators[i].closeTime
+    for j in range(int(call.source)-elevators[i].minFloor, (elevators[i].maxFloor-elevators[i].minFloor)):
+        elevators[i].arrfloose[j + 1] = elevators[i].arrfloose[j] + elevators[i].spf
 
 
 
@@ -181,49 +180,49 @@ def up(call, i):
 "so if the elevator took a given call we will know now the elevator floor/time in any given time/floor until the elevator will arrive to her destination"
 "it doesnt need to go all over evey elevator arr only the one who took the call"
 def dowm(call, i):
-    # for i in range(len(elevators)):
     if float(call.time) != elevators[i].arrfloose[int(call.source)-elevators[i].minFloor]:
         elevators[i].arrfloose[int(call.source)-elevators[i].minFloor] += elevators[i].stopTime + elevators[i].openTime + elevators[i].closeTime + elevators[i].startTime + (
                 float(call.time) - elevators[i].arrfloose[int(call.source)-elevators[i].minFloor])
+        elevators[i].arrfloose[int(call.destination) - elevators[i].minFloor] += elevators[i].stopTime + elevators[i].openTime + elevators[i].closeTime
     else:
-        elevators[i].arrfloose[int(call.source)-elevators[i].minFloor] += elevators[i].closeTime + elevators[i].openTime + elevators[i].stopTime + elevators[i].startTime
-        'i = i + any'
-    for j in range(int(call.source), 0):
-        elevators[i].arrfloose[(j-elevators[i].minFloor) - 1] = (elevators[i].arrfloose[j-elevators[i].minFloor]+elevators[i].spf)
-        "the for need to by from call.source to minfloore "
-        "need to be i-- fixit"
+        elevators[i].arrfloose[int(call.source)-elevators[i].minFloor] += elevators[i].closeTime + elevators[i].openTime + elevators[i].startTime
+        elevators[i].arrfloose[int(call.destination) - elevators[i].minFloor] += elevators[i].stopTime + elevators[i].openTime + elevators[i].closeTime
+    for j in range(int(call.source)-elevators[i].minFloor, 0):
+        elevators[i].arrfloose[j - 1] = elevators[i].arrfloose[j]+elevators[i].spf
 
 
 def nearsource(call):
     mintime = float(call.time) - elevators[0].arrfloose[0]
-    minindex = 0
     maxcallsQueue = 4
+    minindex = 0;
     if int(call.source) < int(call.destination):
         for i in range(len(elevators)):
-            temp = float(call.time) - elevators[i].arrfloose[int(call.source)-elevators[i].minFloor]
-            if temp >= 0:
-                if temp <= mintime:
-                    if len(elevators[i].callsQueue) < maxcallsQueue:
-                        if elevators[i].mood == 1 or elevators[i].mood == 2:
-                            minindex = i
-        up(call, minindex)
-        elevatormood(call,minindex)
+            temp = float(call.time) - elevators[i].arrfloose[(int(call.source) - elevators[i].minFloor)]
+            if temp >= 0 and temp <= mintime:
+                if len(elevators[i].callsQueue) < (maxcallsQueue * elevators[i].speed):
+                    if elevators[i].mood == 1 or elevators[i].mood == 2:
+                        minindex = i
+                # else:
+                #     minindex = callQ(i)
+        up(call, minindex - 1)
+        elevatormood(call, minindex - 1)
         "to know the mood precisely we need the callsArr of amit and with this combination we will allocatedElevator precisely"
     else:
         for i in range(len(elevators)):
-            temp = float(call.time) - float(elevators[i].arrfloose[int(call.source)-elevators[i].minFloor])
-            if temp >= 0:
-                if temp <= mintime:
-                    if len(elevators[i].callsQueue) < maxcallsQueue:
-                        if elevators[i].mood == 0 or elevators[i].mood == 2:
-                            minindex = i
-        dowm(call, minindex)
-        elevatormood(call, minindex)
+            temp = float(call.time) - float(elevators[i].arrfloose[int(call.source) - elevators[i].minFloor])
+            if temp >= 0 and temp <= mintime:
+                if len(elevators[i].callsQueue) < (maxcallsQueue * elevators[i].speed):
+                    if elevators[i].mood == 0 or elevators[i].mood == 2:
+                        minindex = i
+                # else:
+                #     minindex = callQ(i)
+        dowm(call, minindex - 1)
+        elevatormood(call, minindex - 1)
 
     call.allocatedElevator = minindex
     elevators[minindex].callsQueue.append(call)
-    clear(call)
     elevatormood2(call, minindex)
+    clear(call)
 
 "now we want to to say that elevator i took the call and to defin up mode or down mode to elevator until destination"
 
@@ -239,6 +238,18 @@ def nearsource(call):
 # def curentFloor(e, i, j):
 #     return e[i].arrfloose[j]
 
+
+
+def callQ(i):
+    minQ = len(elevators[0].callsQueue)
+    minindex = 0
+    for j in range(len(elevators)):
+        if len(elevators[j].callsQueue) <= minQ:
+            minindex = i
+    return minindex
+
+
+
 def elevatormood(call,i):
         if int(call.source) < int(call.destination):
             elevators[i].mood = 1
@@ -248,7 +259,6 @@ def elevatormood(call,i):
 def elevatormood2(call,i):
     if float(call.time) > elevators[i].arrfloose[(int(elevators[i].callsQueue[(len(elevators[i].callsQueue)-1)].destination))-elevators[i].minFloor]:
         elevators[i].mood == 2
-"need to be completed"
 
 
 def clear(call):
