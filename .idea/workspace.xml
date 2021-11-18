@@ -1,11 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="61ccb575-1830-4028-aac3-423c2093c862" name="Default Changelist" comment="https://github.com/amitmelamed/Offline-Elevators-EX1.git">
-      <change afterPath="$PROJECT_DIR$/Ex1.eran2.0.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/firstproject/runtime" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ex1_eran.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ex1_eran.py" afterDir="false" />
+    <list default="true" id="61ccb575-1830-4028-aac3-423c2093c862" name="Default Changelist" comment="finished Ex1.py">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/GUI.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Call.py" beforeDir="false" afterPath="$PROJECT_DIR$/Call.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elevator.py" beforeDir="false" afterPath="$PROJECT_DIR$/Elevator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ex1.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ex1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ex1Testing.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ex1Testing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/_distutils_hack/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/_distutils_hack/override.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/distutils-precedence.pth" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip-21.3.1.dist-info/INSTALLER" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip-21.3.1.dist-info/LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip-21.3.1.dist-info/METADATA" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip-21.3.1.dist-info/RECORD" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip-21.3.1.dist-info/WHEEL" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip-21.3.1.dist-info/entry_points.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip-21.3.1.dist-info/top_level.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_internal/commands/index.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_internal/index/sources.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_internal/locations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_internal/locations/_distutils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_internal/locations/_sysconfig.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_internal/locations/base.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_internal/metadata/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_internal/metadata/base.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_internal/metadata/pkg_resources.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_internal/operations/build/metadata_editable.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_internal/operations/build/wheel_editable.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_internal/resolution/resolvelib/found_candidates.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_internal/resolution/resolvelib/reporter.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_internal/utils/_log.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_internal/utils/egg_link.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_vendor/chardet/langrussianmodel.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_vendor/chardet/metadata/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_vendor/chardet/metadata/languages.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_vendor/distlib/t64-arm.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_vendor/distlib/w64-arm.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_vendor/packaging/_manylinux.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_vendor/packaging/_musllinux.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_vendor/pep517/in_process/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_vendor/pep517/in_process/_in_process.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_vendor/platformdirs/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_vendor/platformdirs/__main__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_vendor/platformdirs/android.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_vendor/platformdirs/api.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_vendor/platformdirs/macos.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_vendor/platformdirs/unix.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_vendor/platformdirs/version.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_vendor/platformdirs/windows.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_vendor/progress/colors.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_vendor/tenacity/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_vendor/tenacity/_asyncio.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_vendor/tenacity/_utils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_vendor/tenacity/after.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_vendor/tenacity/before.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_vendor/tenacity/before_sleep.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_vendor/tenacity/nap.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_vendor/tenacity/retry.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_vendor/tenacity/stop.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_vendor/tenacity/tornadoweb.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_vendor/tenacity/wait.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_vendor/tomli/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_vendor/tomli/_parser.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_vendor/tomli/_re.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_vendor/urllib3/_version.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_vendor/urllib3/util/proxy.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/_vendor/urllib3/util/ssltransport.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pip/py.typed" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pkg_resources/_vendor/packaging/_typing.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/pkg_resources/tests/data/my-test-package-source/setup.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/setuptools-58.5.3.dist-info/INSTALLER" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/setuptools-58.5.3.dist-info/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/setuptools-58.5.3.dist-info/METADATA" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/setuptools-58.5.3.dist-info/RECORD" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/setuptools-58.5.3.dist-info/WHEEL" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/setuptools-58.5.3.dist-info/entry_points.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/setuptools-58.5.3.dist-info/top_level.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/setuptools/_distutils/command/py37compat.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/setuptools/_distutils/py35compat.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/setuptools/_distutils/py38compat.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/setuptools/_vendor/more_itertools/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/setuptools/_vendor/more_itertools/more.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/setuptools/_vendor/more_itertools/recipes.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/setuptools/_vendor/packaging/_typing.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/setuptools/cli-arm64.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/Lib/site-packages/setuptools/gui-arm64.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstproject/runtime" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out.log" beforeDir="false" afterPath="$PROJECT_DIR$/out.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/output.csv" beforeDir="false" afterPath="$PROJECT_DIR$/output.csv" afterDir="false" />
     </list>
@@ -26,7 +110,6 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Ex1.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Ex1_eran.py" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="20xKU8p6h9YxRpT2Qw4odiamPlx" />
   <component name="ProjectLevelVcsManager">
@@ -41,9 +124,164 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.Ex1Testing">
+    <configuration default="true" type="DjangoTestsConfigurationType">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="TARGET" value="" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="PyBehaveRunConfigurationType" factoryName="Behave">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="ADDITIONAL_ARGS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Ex1Testing" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\razga\Documents\GitHub\Offline-Elevators-EX1\venv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Ex1Testing.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="Python.FlaskServer">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="Tox" factoryName="Tox">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docs" factoryName="Docutils task">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="docutils_input_file" value="" />
+      <option name="docutils_output_file" value="" />
+      <option name="docutils_params" value="" />
+      <option name="docutils_task" value="" />
+      <option name="docutils_open_in_browser" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docs" factoryName="Sphinx task">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="docutils_input_file" value="" />
+      <option name="docutils_output_file" value="" />
+      <option name="docutils_params" value="" />
+      <option name="docutils_task" value="" />
+      <option name="docutils_open_in_browser" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Doctests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Ex1Testing" />
         <item itemvalue="Python.GUI" />
       </list>
     </recent_temporary>
@@ -92,5 +330,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="https://github.com/amitmelamed/Offline-Elevators-EX1.git" />
     <option name="LAST_COMMIT_MESSAGE" value="https://github.com/amitmelamed/Offline-Elevators-EX1.git" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Offline_Elevators_EX1$.coverage" NAME=" Coverage Results" MODIFIED="1637166882967" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Offline_Elevators_EX1$Ex1Testing.coverage" NAME="Ex1Testing Coverage Results" MODIFIED="1637258936723" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
