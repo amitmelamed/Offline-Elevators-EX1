@@ -1,0 +1,69 @@
+CALLS A:
+
+Code Owners,1111,2222,3333,  Building_file,Ex1_Buildings/B1.json,  Calls,output.csvls,0,  certificate, -125062321
+Total waiting time: 11292.0,  average waiting time per call: 112.92,  unCompleted calls,0,  certificate, -471884437
+Elevator Call,668.0095444,91,-9,3,0, Done, dt, 164.5625272709607
+
+
+Code Owners,1111,2222,3333,  Building_file,Ex1_Buildings/B2.json,  Calls,output.csvls,0,  certificate, -29692332111111111112,  stop: 1.6666666666666667
+Total waiting time: 5378.0,  average waiting time per call: 53.78,  unCompleted calls,0,  certificate, -29692332
+Call log: Elevator log, size: 100**********Ex1_Buildings/B5.json,  Calls,output.csvs,0,  certificate, -212891900
+
+
+Code Owners,1111,2222,3333,  Building_file,Ex1_Buildings/B3.json,  Calls,output.csvls,0,  certificate, -29692332
+Total waiting time: 4268.0,  average waiting time per call: 42.68,  unCompleted calls,0,  certificate, -59306203
+Call log: Elevator log, size: 100**********Ex1_Buildings/B5.json,  Calls,output.csvs,0,  certificate, -212891900
+
+
+Code Owners,1111,2222,3333,  Building_file,Ex1_Buildings/B4.json,  Calls,output.csvs,0,  certificate, -212891900
+Total waiting time: 3659.0,  average waiting time per call: 36.59,  unCompleted calls,0,  certificate, -205859433
+Elevator Call,2306.534961,-7,-4,3,0, Done, dt, 164.5625272709607
+
+
+
+Code Owners,1111,2222,3333,  Building_file,Ex1_Buildings/B5.json,  Calls,output.csv
+Total waiting time: 3282.0,  average waiting time per call: 32.82,  unCompleted calls,0,  certificate, -230416549
+Elevator Call,690.5548999,4,90,3,0, Done, dt, 164.56252727096077
+
+CALLS B:
+
+B1//
+B2//
+
+Code Owners,1111,2222,3333,  Building_file,Ex1_Buildings/B3.json,  Calls,output.csv
+Total waiting time: 827818.1315199927,  average waiting time per call: 827.8181315199927,  unCompleted calls,240,  certificate, -2692256134
+
+Code Owners,1111,2222,3333,  Building_file,Ex1_Buildings/B4.json,  Calls,output.csv
+Total waiting time: 535553.4797440015,  average waiting time per call: 535.5534797440015,  unCompleted calls,328,  certificate, -1727253467
+
+Code Owners,1111,2222,3333,  Building_file,Ex1_Buildings/B5.json,  Calls,output.csv
+Total waiting time: 258430.6526079988,  average waiting time per call: 258.4306526079988,  unCompleted calls,96,  certificate, -1042443250
+
+CALLS C:
+
+B1//
+B2//
+
+Code Owners,1111,2222,3333,  Building_file,Ex1_Buildings/B3.json,  Calls,output.csv
+Total waiting time: 804849.2818050152,  average waiting time per call: 804.8492818050152,  unCompleted calls,301,  certificate, -2897229184
+
+Code Owners,1111,2222,3333,  Building_file,Ex1_Buildings/B4.json,  Calls,output.csv
+Total waiting time: 538874.7917200025,  average waiting time per call: 538.8747917200026,  unCompleted calls,104,  certificate, -1703654218
+
+Code Owners,1111,2222,3333,  Building_file,Ex1_Buildings/B5.json,  Calls,output.csv
+Total waiting time: 225341.66067499988,  average waiting time per call: 225.34166067499987,  unCompleted calls,35,  certificate, -628960780
+
+CALLS D:
+
+B1//
+B2//
+
+Code Owners,1111,2222,3333,  Building_file,Ex1_Buildings/B3.json,  Calls,output.csv
+Total waiting time: 804905.9721280057,  average waiting time per call: 804.9059721280057,  unCompleted calls,208,  certificate, -2931444241
+
+Code Owners,1111,2222,3333,  Building_file,Ex1_Buildings/B4.json,  Calls,output.csv
+Total waiting time: 564815.0823880078,  average waiting time per call: 564.8150823880078,  unCompleted calls,318,  certificate, -2085874299
+
+Code Owners,1111,2222,3333,  Building_file,Ex1_Buildings/B5.json,  Calls,output.csv
+Total waiting time: 213478.80673799993,  average waiting time per call: 213.47880673799992,  unCompleted calls,43,  certificate, -553363945
+
