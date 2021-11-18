@@ -160,13 +160,11 @@ for i in range(0, len(obj['_elevators'])):
 
 
 
-"this function initializes the array in second from source floor to destination in up mode"
+"this function initializes the array in second from source floor to maxFloor in up mode"
 "so if the elevator took a given call we will know now the elevator floor/time in any given time/floor"
-"it doesnt need to go all over evey elevator arr only the one who took the call"
 def up(call, i):
     if float(call.time) != elevators[i].arrfloose[int(call.source)-elevators[i].minFloor]:
-        elevators[i].arrfloose[int(call.source)-elevators[i].minFloor] += elevators[i].stopTime + elevators[i].openTime + elevators[i].closeTime + elevators[i].startTime + (
-                float(call.time) - elevators[i].arrfloose[int(call.source)-elevators[i].minFloor])
+        elevators[i].arrfloose[int(call.source)-elevators[i].minFloor] += elevators[i].stopTime + elevators[i].openTime + elevators[i].closeTime + elevators[i].startTime + (float(call.time) - elevators[i].arrfloose[int(call.source)-elevators[i].minFloor])
         elevators[i].arrfloose[int(call.destination)-elevators[i].minFloor] += elevators[i].stopTime + elevators[i].openTime + elevators[i].closeTime
     else:
         elevators[i].arrfloose[int(call.source)-elevators[i].minFloor] += elevators[i].closeTime + elevators[i].openTime + elevators[i].startTime
@@ -176,13 +174,11 @@ def up(call, i):
 
 
 
-"this function initializes the array in second from source floor to destination in down mode"
+"this function initializes the array in seconds from source floor to minFloor in down mode"
 "so if the elevator took a given call we will know now the elevator floor/time in any given time/floor until the elevator will arrive to her destination"
-"it doesnt need to go all over evey elevator arr only the one who took the call"
 def dowm(call, i):
     if float(call.time) != elevators[i].arrfloose[int(call.source)-elevators[i].minFloor]:
-        elevators[i].arrfloose[int(call.source)-elevators[i].minFloor] += elevators[i].stopTime + elevators[i].openTime + elevators[i].closeTime + elevators[i].startTime + (
-                float(call.time) - elevators[i].arrfloose[int(call.source)-elevators[i].minFloor])
+        elevators[i].arrfloose[int(call.source)-elevators[i].minFloor] += elevators[i].stopTime + elevators[i].openTime + elevators[i].closeTime + elevators[i].startTime + (float(call.time) - elevators[i].arrfloose[int(call.source)-elevators[i].minFloor])
         elevators[i].arrfloose[int(call.destination) - elevators[i].minFloor] += elevators[i].stopTime + elevators[i].openTime + elevators[i].closeTime
     else:
         elevators[i].arrfloose[int(call.source)-elevators[i].minFloor] += elevators[i].closeTime + elevators[i].openTime + elevators[i].startTime
@@ -195,51 +191,39 @@ def nearsource(call):
     mintime = float(call.time) - elevators[0].arrfloose[0]
     maxcallsQueue = 4
     minindex = 0;
+    "check if the elevator is going to source direction (up or down) so we will know if its worth to this elevator to take the call"
     if int(call.source) < int(call.destination):
+        "we want to go over all elevators to see which one closer to call.source be given call.time and compering it to e[i].arrfloose[correnfloor]"
         for i in range(len(elevators)):
             temp = float(call.time) - elevators[i].arrfloose[(int(call.source) - elevators[i].minFloor)]
             if temp >= 0 and temp <= mintime:
-                if len(elevators[i].callsQueue) < (maxcallsQueue * elevators[i].speed):
+                if len(elevators[i].callsQueue) < (maxcallsQueue * elevators[i].spf):
                     if elevators[i].mood == 1 or elevators[i].mood == 2:
                         minindex = i
-                # else:
-                #     minindex = callQ(i)
-        up(call, minindex - 1)
-        elevatormood(call, minindex - 1)
-        "to know the mood precisely we need the callsArr of amit and with this combination we will allocatedElevator precisely"
+                else:
+                    minindex = callQ(i)
+        up(call, minindex)
+        "after elevator took a call we need to update her mood"
+        elevatormood(call, minindex)
     else:
         for i in range(len(elevators)):
             temp = float(call.time) - float(elevators[i].arrfloose[int(call.source) - elevators[i].minFloor])
             if temp >= 0 and temp <= mintime:
-                if len(elevators[i].callsQueue) < (maxcallsQueue * elevators[i].speed):
+                if len(elevators[i].callsQueue) < (maxcallsQueue * elevators[i].spf):
                     if elevators[i].mood == 0 or elevators[i].mood == 2:
                         minindex = i
-                # else:
-                #     minindex = callQ(i)
-        dowm(call, minindex - 1)
-        elevatormood(call, minindex - 1)
+                else:
+                    minindex = callQ(i)
+        dowm(call, minindex)
+        elevatormood(call, minindex)
 
     call.allocatedElevator = minindex
     elevators[minindex].callsQueue.append(call)
     elevatormood2(call, minindex)
     clear(call)
 
-"now we want to to say that elevator i took the call and to defin up mode or down mode to elevator until destination"
 
-
-"we want to go over all elevators to see which one closer to call.source be given call.time and compering it to e[i].arrfloose[correnfloor]"
-"we need also to check if the elevator is going to source direction (up or down) so we will know if its worth to this elevator to take the call"
-"did not complete"
-"i'm tired and can't think"
-
-
-"this function returns what is the time of elevator in the i elevator and j floor"  "need to be fixed"
-"we can also return the curent floor by given call.time"
-# def curentFloor(e, i, j):
-#     return e[i].arrfloose[j]
-
-
-
+"this function it to check which elevators heve mincalls in callsQueue"
 def callQ(i):
     minQ = len(elevators[0].callsQueue)
     minindex = 0
@@ -256,19 +240,16 @@ def elevatormood(call,i):
         else:
             elevators[i].mood = 0
 
+
 def elevatormood2(call,i):
     if float(call.time) > elevators[i].arrfloose[(int(elevators[i].callsQueue[(len(elevators[i].callsQueue)-1)].destination))-elevators[i].minFloor]:
         elevators[i].mood == 2
 
 
+
 def clear(call):
     for e in elevators:
         e.clearCompleteCalls(call)
-
-
-
-"if elevator going up we want to initializes the e[i].arrfloose so we can know where the elevator in eny given time"
-"i will copmlete tomorrow i dont know what im doing anymore"
 
 
 
