@@ -114,8 +114,7 @@ for i in callsArr:
 
 inputData = []
 for i in callsArr:
-    tempArr = ["Elevator Call", i.time, i.source, i.destination, 3, i.allocatedElevator, " Done", " dt",
-               " 164.5625272709607"]
+    tempArr = ["Elevator Call", i.time, i.source, i.destination, 3, i.allocatedElevator, " Done", " ", " "]
     inputData.append(tempArr)
 
 "write data in the new output.csv file"
@@ -123,4 +122,4 @@ with open(output, "w", newline="") as f:
     writer = csv.writer(f)
     writer.writerows(inputData)
 #if you want to run the simulator after running the program use this line:
-subprocess.Popen(["powershell.exe","java -jar Ex1_checker_V1.2_obf.jar 316329069,207640806,209380922 " + list[1] + " " + list[3] + " out.log"])
+#subprocess.Popen(["powershell.exe","java -jar Ex1_checker_V1.2_obf.jar 316329069,207640806,209380922 " + list[1] + " " + list[3] + " out.log"])
