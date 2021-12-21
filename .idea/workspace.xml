@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="61ccb575-1830-4028-aac3-423c2093c862" name="Default Changelist" comment="https://github.com/amitmelamed/Offline-Elevators-EX1.git">
-      <change afterPath="$PROJECT_DIR$/Ex1.eran2.0.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/firstproject/runtime" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ex1_eran.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ex1_eran.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Call.py" beforeDir="false" afterPath="$PROJECT_DIR$/Call.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ex1.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ex1.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out.log" beforeDir="false" afterPath="$PROJECT_DIR$/out.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/output.csv" beforeDir="false" afterPath="$PROJECT_DIR$/output.csv" afterDir="false" />
     </list>
@@ -26,7 +25,6 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Ex1.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Ex1_eran.py" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="20xKU8p6h9YxRpT2Qw4odiamPlx" />
   <component name="ProjectLevelVcsManager">
@@ -39,14 +37,8 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-  </component>
-  <component name="RunManager">
-    <recent_temporary>
-      <list>
-        <item itemvalue="Python.GUI" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -61,6 +53,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1636980821894</updated>
+      <workItem from="1640078215968" duration="32000" />
     </task>
     <task id="LOCAL‎00002" summary="https://github.com/amitmelamed/Offline-Elevators-EX1.git">
       <created>1637004552510</created>
@@ -77,6 +70,9 @@
     <option name="localTasksCounter" value="4" />
     <servers />
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -87,7 +83,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="https://github.com/amitmelamed/Offline-Elevators-EX1.git" />
