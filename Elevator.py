@@ -1,6 +1,5 @@
 INTERVAL = 30
 
-
 class Elevator:
     def __init__(self, id, speed, minFloor, maxFloor, closeTime, openTime, startTime, stopTime):
         self.id = id

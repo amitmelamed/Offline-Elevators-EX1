@@ -7,7 +7,7 @@ from Call import Call
 
 
 # to run the algorithm
-# python3 Ex1.py data/Ex1_input/Ex1_Buildings/B5.json data/Ex1_input/Ex1_Calls/Calls_a.csv output.csv
+# python3 Ex1.py Ex1_Buildings/B5.json Ex1_Calls/Calls_a.csv output.csv
 # to run the tester
 # java -jar libs/Ex1_checker_V1.2_obf.jar 1111,2222,3333 data/Ex1_input/Ex1_Buildings/B5.json output.csv out.log
 
@@ -114,8 +114,7 @@ for i in callsArr:
 
 inputData = []
 for i in callsArr:
-    tempArr = ["Elevator Call", i.time, i.source, i.destination, 3, i.allocatedElevator, " Done", " dt",
-               " 164.5625272709607"]
+    tempArr = ["Elevator Call", i.time, i.source, i.destination, 3, i.allocatedElevator, " Done", " ", " "]
     inputData.append(tempArr)
 
 "write data in the new output.csv file"

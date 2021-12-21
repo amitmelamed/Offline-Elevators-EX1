@@ -2,3 +2,6 @@
 .idea/runConfigurations.xml
 out.log
 output.csv
+dir_to_ignore/.idea
+dir_to_ignore/__pycache__
+dir_to_ignore/venv

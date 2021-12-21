@@ -6,17 +6,15 @@ elevators = []
 
 
 class MyTestCase(unittest.TestCase):
-    def test_something(self):
+    def constructorsTest(self):
 
-
-        e1 = Elevator(0, 1, 0, 10, 1, 1, 1, 1)
-        e2 = Elevator(1, 2, 0, 10, 1, 1, 1, 1)
+        e1 = Elevator(0, 1, 0, 10, 4, 4, 4, 4)
+        e2 = Elevator(1, 7, 0, 10, 1, 1, 1, 1)
         c1 = Call("0",0,10,-1)
         elevators.append(e1)
         elevators.append(e2)
-        allocated = allocateElevator(c1)
-
-        self.assertEqual(e1.id, allocated)  # add assertion here
+        allocateElevator(c1)
+        self.assertEqual(e2.id, c1.allocatedElevator )
 
 "function that gets a call and returns allocated elevator"
 def allocateElevator(call):
